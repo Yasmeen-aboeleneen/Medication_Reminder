@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/Constants.dart';
+import 'package:medication_reminder/Screens/NewEntryScreen.dart';
 import 'package:medication_reminder/Widgets/BottomContainer.dart';
 
 import 'package:medication_reminder/Widgets/HeaderPart.dart';
@@ -11,31 +12,35 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Column(
         children: [
-        const  HeaderPart(),
+          const HeaderPart(),
           SizedBox(
             height: 4.h,
           ),
-        const  TopCounter(),
-         SizedBox(height: 9.h),
-        const  BottomContainer()
+          const TopCounter(),
+          SizedBox(height: 9.h),
+          const BottomContainer()
         ],
       ),
       floatingActionButton: InkResponse(
-        onTap: (){
-          
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const NewEntryScreen()));
         },
         child: SizedBox(
           width: 19.w,
           height: 9.h,
           child: Card(
             shape: BeveledRectangleBorder(
-              borderRadius: BorderRadius.circular(2.h)
-            ),
+                borderRadius: BorderRadius.circular(2.h)),
             color: KPrimaryColor,
-            child: Icon(Icons.add_outlined,size: 50.sp,color: KSecondaryColor,),
+            child: Icon(
+              Icons.add_outlined,
+              size: 50.sp,
+              color: KSecondaryColor,
+            ),
           ),
         ),
       ),
