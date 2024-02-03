@@ -14,7 +14,7 @@ class PanelTitle extends StatelessWidget {
       TextSpan(
           text: title,
           style: TextStyle(
-              fontSize: 15.sp, color: KMainColor, fontWeight: FontWeight.w400)),
+              fontSize: 14.sp, color: KMainColor, fontWeight: FontWeight.w400)),
       TextSpan(
           text: isRequired ? '*' : '',
           style: TextStyle(
