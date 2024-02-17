@@ -35,11 +35,11 @@ class HomeScreenBody extends StatelessWidget {
           child: Card(
             shape: BeveledRectangleBorder(
                 borderRadius: BorderRadius.circular(2.h)),
-            color: KPrimaryColor,
+            color: kPrimaryColor,
             child: Icon(
               Icons.add_outlined,
               size: 50.sp,
-              color: KSecondaryColor,
+              color: kSecondaryColor,
             ),
           ),
         ),

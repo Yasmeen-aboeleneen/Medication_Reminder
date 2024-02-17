@@ -17,7 +17,7 @@ class TopCounter extends StatelessWidget {
             child: const Text(
               'Live Healthier!',
               style: TextStyle(
-                  fontSize: 28, fontWeight: FontWeight.bold, color: KColor),
+                  fontSize: 28, fontWeight: FontWeight.bold, color: kColor),
             ),
           ),
         ),
@@ -28,7 +28,7 @@ class TopCounter extends StatelessWidget {
           child: Text(
             '0',
             style: TextStyle(
-                fontSize: 35, fontWeight: FontWeight.bold, color: KColor),
+                fontSize: 35, fontWeight: FontWeight.bold, color: kColor),
           ),
         )
       ],

@@ -21,21 +21,21 @@ class _IntervalSelectionState extends State<IntervalSelection> {
         Text(
           'Remind me every',
           style: TextStyle(
-            color: KColor,
+            color: kColor,
             fontSize: 12.5.sp,
             fontWeight: FontWeight.w600,
           ),
         ),
         DropdownButton(
-            iconEnabledColor: KMainColor,
-            dropdownColor: KSColor,
+            iconEnabledColor: kMainColor,
+            dropdownColor: kSColor,
             itemHeight: 8.h,
             hint: _selected == 0
                 ? Text(
                     'Select an interval',
                     style: TextStyle(
                         fontSize: 11.5.sp,
-                        color: KMainColor,
+                        color: kMainColor,
                         fontWeight: FontWeight.w500),
                   )
                 : null,
@@ -49,7 +49,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
                     style: TextStyle(
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w300,
-                      color: KMainColor,
+                      color: kMainColor,
                     ),
                   ));
             }).toList(),
@@ -61,7 +61,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
         Text(
           _selected == 1 ? 'Hour' : 'Hours',
           style: TextStyle(
-            color: KColor,
+            color: kColor,
             fontSize: 12.5.sp,
             fontWeight: FontWeight.w600,
           ),

@@ -11,7 +11,7 @@ class BottomContainer extends StatelessWidget {
         'You are in a good health🥰 ',
         style: TextStyle(
           fontSize: 25,
-          color: KMainColor,
+          color: kMainColor,
           fontWeight: FontWeight.w500,
         ),
         textAlign: TextAlign.center,

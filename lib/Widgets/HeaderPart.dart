@@ -12,7 +12,7 @@ class HeaderPart extends StatelessWidget {
         height: 120,
         width: SizeConfig.ScreenWidth,
         decoration: const BoxDecoration(
-            color: KPrimaryColor,
+            color: kPrimaryColor,
             borderRadius:
                 BorderRadiusDirectional.only(bottomEnd: Radius.circular(100))),
         child: const Column(
@@ -27,7 +27,7 @@ class HeaderPart extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
-                          color: KSecondaryColor),
+                          color: kSecondaryColor),
                     ),
                   ),
                 ],

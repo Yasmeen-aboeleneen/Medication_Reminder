@@ -9,25 +9,21 @@ class ConfirmButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(right: 18.w,left: 18.w),
+      padding: EdgeInsets.only(right: 18.w, left: 18.w),
       child: SizedBox(
         height: 7.h,
-        
-        
         child: TextButton(
-            onPressed: () {},
-            child: Center(
-              child: Text(
-                'Confirm',
-                
-                  
-                style: TextStyle(
-                    color: KSColor, fontSize: 13.sp, fontWeight: FontWeight.w600),
-              ),
+          onPressed: () {},
+          child: Center(
+            child: Text(
+              'Confirm',
+              style: TextStyle(
+                  color: kSColor, fontSize: 13.sp, fontWeight: FontWeight.w600),
             ),
-            style: TextButton.styleFrom(
-                backgroundColor: KMainColor, shape: const StadiumBorder()),
           ),
+          style: TextButton.styleFrom(
+              backgroundColor: kMainColor, shape: const StadiumBorder()),
+        ),
       ),
     );
   }

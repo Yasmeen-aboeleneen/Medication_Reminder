@@ -45,10 +45,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
             child: Text(
           'Add New Medicine',
           style: TextStyle(
-              color: KColor, fontWeight: FontWeight.w500, fontSize: 20.sp),
+              color: kColor, fontWeight: FontWeight.w500, fontSize: 20.sp),
         )),
         iconTheme: IconThemeData(
-          color: KColor,
+          color: kColor,
           size: 23.sp,
         ),
       ),
@@ -70,21 +70,21 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
               maxLength: 30,
               decoration: const InputDecoration(
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: KColor, width: 2.5)),
+                    borderSide: BorderSide(color: kColor, width: 2.5)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: KMainColor, width: 2.5)),
+                    borderSide: BorderSide(color: kMainColor, width: 2.5)),
                 hintText: 'Enter Medicine Name',
                 hintStyle: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
-                  color: KMainColor,
+                  color: kMainColor,
                 ),
               ),
               style: TextStyle(
                 fontSize: 15.sp,
                 fontWeight: FontWeight.normal,
               ),
-              cursorColor: KMainColor,
+              cursorColor: kMainColor,
             ),
             SizedBox(
               height: 1.h,
@@ -102,21 +102,21 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
               maxLength: 5,
               decoration: const InputDecoration(
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: KColor, width: 2.5)),
+                    borderSide: BorderSide(color: kColor, width: 2.5)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: KMainColor, width: 2.5)),
+                    borderSide: BorderSide(color: kMainColor, width: 2.5)),
                 hintText: 'Enter dosage in mg',
                 hintStyle: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
-                  color: KMainColor,
+                  color: kMainColor,
                 ),
               ),
               style: TextStyle(
                 fontSize: 15.sp,
                 fontWeight: FontWeight.normal,
               ),
-              cursorColor: KMainColor,
+              cursorColor: kMainColor,
             ),
             SizedBox(
               height: 1.h,

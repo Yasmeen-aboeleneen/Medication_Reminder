@@ -14,11 +14,11 @@ class PanelTitle extends StatelessWidget {
       TextSpan(
           text: title,
           style: TextStyle(
-              fontSize: 14.sp, color: KMainColor, fontWeight: FontWeight.w400)),
+              fontSize: 14.sp, color: kMainColor, fontWeight: FontWeight.w400)),
       TextSpan(
           text: isRequired ? '*' : '',
           style: TextStyle(
-              fontSize: 10.sp, color: KMainColor, fontWeight: FontWeight.w400))
+              fontSize: 10.sp, color: kMainColor, fontWeight: FontWeight.w400))
     ]));
   }
 }

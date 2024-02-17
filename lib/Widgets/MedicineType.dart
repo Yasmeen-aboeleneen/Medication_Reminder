@@ -20,7 +20,7 @@ class MedicineType extends StatelessWidget {
         width: 20.w,
         height: 12.h,
         decoration: BoxDecoration(
-            color: isSelected ? KCcolor : KSecondaryColor,
+            color: isSelected ? kCcolor : kSecondaryColor,
             borderRadius: BorderRadius.circular(3.h)),
         child: Column(
           children: [
@@ -37,7 +37,7 @@ class MedicineType extends StatelessWidget {
               child: Text(
                 name,
                 style: TextStyle(
-                    color: KMainColor,
+                    color: kMainColor,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400),
               ),
