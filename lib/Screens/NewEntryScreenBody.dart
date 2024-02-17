@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/Constants.dart';
+import 'package:medication_reminder/Widgets/IntervalSelection.dart';
 import 'package:medication_reminder/Widgets/MedicineType.dart';
 import 'package:medication_reminder/Widgets/PanelTitle.dart';
 import 'package:sizer/sizer.dart';
@@ -192,7 +193,14 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                       ),
                     );
                   }),
-            )
+            ),
+             SizedBox(
+              height: 3.h,
+            ),
+            const PanelTitle(title: "Interval Selection", isRequired: true),
+            // 
+            
+            IntervalSelection(),
           ],
         ),
       ),
