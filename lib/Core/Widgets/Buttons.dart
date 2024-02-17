@@ -1,10 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
-class HomeScreenButton extends StatelessWidget {
-  const HomeScreenButton({super.key});
+import '../Constants/Constants.dart';
+
+class ConfirmButton extends StatelessWidget {
+  const ConfirmButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding:  EdgeInsets.only(right: 18.w,left: 18.w),
+      child: SizedBox(
+        height: 7.h,
+        
+        
+        child: TextButton(
+            onPressed: () {},
+            child: Center(
+              child: Text(
+                'Confirm',
+                
+                  
+                style: TextStyle(
+                    color: KSColor, fontSize: 13.sp, fontWeight: FontWeight.w600),
+              ),
+            ),
+            style: TextButton.styleFrom(
+                backgroundColor: KMainColor, shape: const StadiumBorder()),
+          ),
+      ),
+    );
   }
 }

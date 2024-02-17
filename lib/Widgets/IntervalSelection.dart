@@ -27,9 +27,9 @@ class _IntervalSelectionState extends State<IntervalSelection> {
           ),
         ),
         DropdownButton(
-          iconEnabledColor: KMainColor,
-          dropdownColor: KSColor,
-          itemHeight: 8.h,
+            iconEnabledColor: KMainColor,
+            dropdownColor: KSColor,
+            itemHeight: 8.h,
             hint: _selected == 0
                 ? Text(
                     'Select an interval',
@@ -39,8 +39,8 @@ class _IntervalSelectionState extends State<IntervalSelection> {
                         fontWeight: FontWeight.w500),
                   )
                 : null,
-                elevation: 3,
-                value: _selected==0?null:_selected,
+            elevation: 3,
+            value: _selected == 0 ? null : _selected,
             items: _intervals.map((int value) {
               return DropdownMenuItem<int>(
                   value: value,
@@ -58,12 +58,14 @@ class _IntervalSelectionState extends State<IntervalSelection> {
                 _selected = newVal!;
               });
             }),
-            Text(_selected==1?'Hour':'Hours',
-            style: TextStyle(
-              color: KColor,
+        Text(
+          _selected == 1 ? 'Hour' : 'Hours',
+          style: TextStyle(
+            color: KColor,
             fontSize: 12.5.sp,
             fontWeight: FontWeight.w600,
-            ),)
+          ),
+        )
       ],
     );
   }
