@@ -48,11 +48,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
               color: kColor, fontWeight: FontWeight.w500, fontSize: 20.sp),
         )),
         iconTheme: IconThemeData(
-        
-        color: kColor,
+          color: kColor,
           size: 23.sp,
         ),
-        backgroundColor: kScaffoldColor,
+        backgroundColor: kScaffold,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
@@ -83,9 +82,9 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                 ),
               ),
               style: TextStyle(
-                fontSize: 15.sp,
-                fontWeight: FontWeight.normal,
-              ),
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.normal,
+                  color: kTextColor),
               cursorColor: kMainColor,
             ),
             SizedBox(
@@ -115,9 +114,9 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                 ),
               ),
               style: TextStyle(
-                fontSize: 15.sp,
-                fontWeight: FontWeight.normal,
-              ),
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.normal,
+                  color: kTextColor),
               cursorColor: kMainColor,
             ),
             SizedBox(
