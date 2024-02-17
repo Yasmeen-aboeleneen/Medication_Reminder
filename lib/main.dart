@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medication_reminder/Core/Constants/Constants.dart';
 import 'package:medication_reminder/Home/HomeScreen.dart';
 import 'package:sizer/sizer.dart';
 
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Medication Reminder',
-          theme: ThemeData(
-            useMaterial3: true,
+          theme: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: kScaffoldColor,
           ),
           home: const HomeScreen(),
         );

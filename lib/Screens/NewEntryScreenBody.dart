@@ -48,9 +48,11 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
               color: kColor, fontWeight: FontWeight.w500, fontSize: 20.sp),
         )),
         iconTheme: IconThemeData(
-          color: kColor,
+        
+        color: kColor,
           size: 23.sp,
         ),
+        backgroundColor: kScaffoldColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
