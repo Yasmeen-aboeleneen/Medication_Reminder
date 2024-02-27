@@ -12,17 +12,18 @@ class RowOfMedType extends StatelessWidget {
       padding: const EdgeInsets.only(top: 2),
       child: StreamBuilder<Object>(
           stream: null,
-          builder: (context, snapshot) {
+          builder: (context, AsyncSnapshot snapshot) {
             return SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
                   MedicineType(
-                      name: 'Pills',
-                      image: "Assets/Icons/pills.png",
-                      isSelected: snapshot.data == 'Assets/Icons/syringe.png'
-                          ? true
-                          : false),
+                    name: 'Pills',
+                    image: "Assets/Icons/pills.png",
+                    isSelected: snapshot.data == 'Assets/Icons/syringe.png'
+                        ? true
+                        : false,
+                  ),
                   SizedBox(
                     width: 3.w,
                   ),

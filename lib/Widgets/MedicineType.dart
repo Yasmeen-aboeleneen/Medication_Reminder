@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/Constants.dart';
+import 'package:medication_reminder/Screens/NewEntry_Bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class MedicineType extends StatelessWidget {
@@ -7,15 +9,20 @@ class MedicineType extends StatelessWidget {
       {super.key,
       required this.name,
       required this.image,
-      required this.isSelected});
-
+      required this.isSelected, 
+      });
+  
+  
   final String name;
   final String image;
   final bool isSelected;
   @override
   Widget build(BuildContext context) {
+    final NewEntryBloc newEntryBloc = Provider.of<NewEntryBloc>(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        newEntryBloc.updateSelectedMedicine(MedicineType as MedicineType);
+      },
       child: Container(
         width: 20.w,
         height: 12.h,
