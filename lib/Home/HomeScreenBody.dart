@@ -13,37 +13,36 @@ class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const HeaderPart(),
-          SizedBox(
-            height: 4.h,
-          ),
-          const TopCounter(),
-          SizedBox(height: 9.h),
-          const BottomContainer()
-        ],
-      ),
-      floatingActionButton: InkResponse(
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const NewEntryScreen()));
-        },
-        child: SizedBox(
-          width: 19.w,
-          height: 9.h,
-          child: Card(
-            shape: BeveledRectangleBorder(
-                borderRadius: BorderRadius.circular(2.h)),
-            color: kPrimaryColor,
-            child: Icon(
-              Icons.add_outlined,
-              size: 50.sp,
-              color: kSecondaryColor,
+        floatingActionButton: InkResponse(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NewEntryScreen()));
+          },
+          child: SizedBox(
+            width: 19.w,
+            height: 9.h,
+            child: Card(
+              shape: BeveledRectangleBorder(
+                  borderRadius: BorderRadius.circular(2.h)),
+              color: kPrimaryColor,
+              child: Icon(
+                Icons.add_outlined,
+                size: 50.sp,
+                color: kSecondaryColor,
+              ),
             ),
           ),
         ),
-      ),
-    );
+        body: Column(children: [
+          const HeaderPart(),
+          SizedBox(
+            height: 1.5.h,
+          ),
+          const TopCounter(),
+          SizedBox(height: .2.h),
+          const Expanded(child: BottomContainer()),
+        ]));
   }
 }

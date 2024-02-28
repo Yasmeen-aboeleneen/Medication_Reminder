@@ -13,8 +13,9 @@ class HeaderPart extends StatelessWidget {
         width: SizeConfig.ScreenWidth,
         decoration: const BoxDecoration(
             color: kPrimaryColor,
-            borderRadius:
-                BorderRadiusDirectional.only(bottomEnd: Radius.circular(100))),
+            borderRadius: BorderRadiusDirectional.only(
+                bottomEnd: Radius.circular(50),
+                bottomStart: Radius.circular(50))),
         child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

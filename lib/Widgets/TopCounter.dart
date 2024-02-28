@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../Core/Constants/Constants.dart';
 
@@ -21,8 +22,8 @@ class TopCounter extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: 1.5.h,
         ),
         const Center(
           child: Text(
