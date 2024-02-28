@@ -43,7 +43,9 @@ class _SelectTimeState extends State<SelectTime> {
                   ? 'Select Time'
                   : '${convertTime(_time.hour.toString())}:${convertTime(_time.minute.toString())}',
               style: TextStyle(
-                  color: kSColor, fontSize: 13.sp, fontWeight: FontWeight.w600),
+                  color: kScaffold,
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.w600),
             ),
           ),
           style: TextButton.styleFrom(

@@ -21,8 +21,9 @@ class NewEntryScreenBody extends StatefulWidget {
 class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
   late TextEditingController nameController;
   late TextEditingController dosageController;
-  late GlobalKey<ScaffoldState> _scaffoldKey;
   late NewEntryBloc _newEntryBloc;
+  late GlobalKey<ScaffoldState> _scaffoldKey;
+
   @override
   void dispose() {
     super.dispose();
@@ -158,10 +159,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                             MedicineTypee(
                               name: 'Syrup',
                               image: "Assets/Icons/syrup.png",
-                              isSelected: snapshot.data == MedicineType.Syrup
+                              isSelected: snapshot.data == MedicineType.syrup
                                   ? true
                                   : false,
-                              medicineType: MedicineType.Syrup,
+                              medicineType: MedicineType.syrup,
                             ),
                             SizedBox(
                               width: 3.w,
@@ -169,10 +170,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                             MedicineTypee(
                               name: 'Syringe',
                               image: "Assets/Icons/syringe.png",
-                              isSelected: snapshot.data == MedicineType.Syringe
+                              isSelected: snapshot.data == MedicineType.syringe
                                   ? true
                                   : false,
-                              medicineType: MedicineType.Syringe,
+                              medicineType: MedicineType.syringe,
                             ),
                             SizedBox(
                               width: 3.w,
@@ -180,10 +181,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                             MedicineTypee(
                               name: 'Nasal',
                               image: "Assets/Icons/nasal-spray (1).png",
-                              isSelected: snapshot.data == MedicineType.Nasal
+                              isSelected: snapshot.data == MedicineType.nasal
                                   ? true
                                   : false,
-                              medicineType: MedicineType.Nasal,
+                              medicineType: MedicineType.nasal,
                             ),
                             SizedBox(
                               width: 3.w,
@@ -191,24 +192,21 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                             MedicineTypee(
                               name: 'Eye Drops',
                               image: "Assets/Icons/eye-drops.png",
-                              isSelected: snapshot.data == MedicineType.EyeDrops
+                              isSelected: snapshot.data == MedicineType.eyeDrops
                                   ? true
                                   : false,
-                              medicineType: MedicineType.EyeDrops,
+                              medicineType: MedicineType.eyeDrops,
                             ),
                             SizedBox(
                               width: 3.w,
                             ),
-                            GestureDetector(
-                              child: MedicineTypee(
-                                name: 'Ear Drops',
-                                image: "Assets/Icons/ear-drops.png",
-                                isSelected:
-                                    snapshot.data == MedicineType.EarDrops
-                                        ? true
-                                        : false,
-                                medicineType: MedicineType.EarDrops,
-                              ),
+                            MedicineTypee(
+                              name: 'Ear Drops',
+                              image: "Assets/Icons/ear-drops.png",
+                              isSelected: snapshot.data == MedicineType.earDrops
+                                  ? true
+                                  : false,
+                              medicineType: MedicineType.earDrops,
                             )
                           ],
                         );

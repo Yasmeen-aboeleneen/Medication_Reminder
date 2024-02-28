@@ -31,7 +31,7 @@ class MedicineTypee extends StatelessWidget {
         width: 20.w,
         height: 12.h,
         decoration: BoxDecoration(
-            color: isSelected ? kCcolor : kSecondaryColor,
+            color: isSelected ? kCccolor : Colors.white,
             borderRadius: BorderRadius.circular(3.h)),
         child: Column(
           children: [

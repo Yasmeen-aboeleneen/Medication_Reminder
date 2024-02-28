@@ -44,12 +44,12 @@ class NewEntryBloc {
     _selectedTimeOfDay$!.add(time);
   }
 
-  void updateSelectedMedicine(MedicineType Type) {
+  void updateSelectedMedicine(MedicineType type) {
     MedicineType _tempType = _selectedMedicineType$!.value;
-    if (Type == _tempType) {
+    if (type == _tempType) {
       _selectedMedicineType$!.add(MedicineType.none);
     } else {
-      _selectedMedicineType$!.add(MedicineType.none);
+      _selectedMedicineType$!.add(type);
     }
   }
 }

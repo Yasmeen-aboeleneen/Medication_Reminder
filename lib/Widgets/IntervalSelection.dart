@@ -28,7 +28,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
         ),
         DropdownButton(
             iconEnabledColor: kMainColor,
-            dropdownColor: kSColor,
+            dropdownColor: kScaffold,
             itemHeight: 8.h,
             hint: _selected == 0
                 ? Text(

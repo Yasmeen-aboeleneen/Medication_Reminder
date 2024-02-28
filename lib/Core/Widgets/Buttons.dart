@@ -18,7 +18,9 @@ class ConfirmButton extends StatelessWidget {
             child: Text(
               'Confirm',
               style: TextStyle(
-                  color: kSColor, fontSize: 13.sp, fontWeight: FontWeight.w600),
+                  color: kScaffold,
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.w600),
             ),
           ),
           style: TextButton.styleFrom(
@@ -28,5 +30,3 @@ class ConfirmButton extends StatelessWidget {
     );
   }
 }
-
-
