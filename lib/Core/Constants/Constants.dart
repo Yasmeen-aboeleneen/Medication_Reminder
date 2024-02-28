@@ -8,3 +8,5 @@ const Color kSColor = Colors.white;
 const Color kScaffold = Colors.white;
 const Color kColor = Colors.black;
 const Color kCcolor = Color.fromARGB(255, 175, 170, 170);
+const Color kCccolor =Color.fromARGB(255, 104, 76, 76);
+

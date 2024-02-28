@@ -1,4 +1,4 @@
-import 'package:medication_reminder/Widgets/MedicineType.dart';
+import 'package:medication_reminder/Widgets/Medicine_Type.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../Common/Errors.dart';
@@ -20,7 +20,7 @@ class NewEntryBloc {
 
   NewEntryBloc() {
     _selectedMedicineType$ =
-        BehaviorSubject<MedicineType>.seeded(MedicineType as MedicineType);
+        BehaviorSubject<MedicineType>.seeded(MedicineType.none);
     _selectedTimeOfDay$ = BehaviorSubject<String>.seeded('none');
     _selectedIntervals$ = BehaviorSubject<int>.seeded(0);
     _errorState$ = BehaviorSubject<EntryError>();
@@ -44,12 +44,12 @@ class NewEntryBloc {
     _selectedTimeOfDay$!.add(time);
   }
 
-  void updateSelectedMedicine(MedicineType type) {
+  void updateSelectedMedicine(MedicineType Type) {
     MedicineType _tempType = _selectedMedicineType$!.value;
-    if (type == _tempType) {
-      _selectedMedicineType$!.add(MedicineType as MedicineType);
+    if (Type == _tempType) {
+      _selectedMedicineType$!.add(MedicineType.none);
     } else {
-      _selectedMedicineType$!.add(type);
+      _selectedMedicineType$!.add(MedicineType.none);
     }
   }
 }
