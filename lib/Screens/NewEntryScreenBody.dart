@@ -65,166 +65,168 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
         value: _newEntryBloc,
         child: Padding(
           padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const PanelTitle(
-                title: 'Medicine Name',
-                isRequired: true,
-              ),
-              SizedBox(
-                height: 1.h,
-              ),
-              TextFormField(
-                controller: nameController,
-                textCapitalization: TextCapitalization.words,
-                maxLength: 30,
-                decoration: const InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: kColor, width: 2.5)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: kMainColor, width: 2.5)),
-                  hintText: 'Enter Medicine Name',
-                  hintStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: kMainColor,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const PanelTitle(
+                  title: 'Medicine Name',
+                  isRequired: true,
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                TextFormField(
+                  controller: nameController,
+                  textCapitalization: TextCapitalization.words,
+                  maxLength: 30,
+                  decoration: const InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: kColor, width: 2.5)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: kMainColor, width: 2.5)),
+                    hintText: 'Enter Medicine Name',
+                    hintStyle: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: kMainColor,
+                    ),
+                  ),
+                  style: TextStyle(
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.normal,
+                      color: kTextColor),
+                  cursorColor: kMainColor,
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                const PanelTitle(
+                  title: 'Dosage in mg ',
+                  isRequired: false,
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                TextFormField(
+                  controller: dosageController,
+                  keyboardType: TextInputType.number,
+                  maxLength: 5,
+                  decoration: const InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: kColor, width: 2.5)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: kMainColor, width: 2.5)),
+                    hintText: 'Enter dosage in mg',
+                    hintStyle: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: kMainColor,
+                    ),
+                  ),
+                  style: TextStyle(
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.normal,
+                      color: kTextColor),
+                  cursorColor: kMainColor,
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                const PanelTitle(title: 'Medicine Type', isRequired: false),
+                SizedBox(
+                  height: 1.h,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 2),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: StreamBuilder<MedicineType>(
+                        stream: _newEntryBloc.selectedMedicineType,
+                        builder: (context, snapshot) {
+                          return Row(
+                            children: [
+                              MedicineTypee(
+                                name: 'Pills',
+                                image: "Assets/Icons/pills.png",
+                                isSelected: snapshot.data == MedicineType.pills
+                                    ? true
+                                    : false,
+                                medicineType: MedicineType.pills,
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              MedicineTypee(
+                                name: 'Syrup',
+                                image: "Assets/Icons/syrup.png",
+                                isSelected: snapshot.data == MedicineType.syrup
+                                    ? true
+                                    : false,
+                                medicineType: MedicineType.syrup,
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              MedicineTypee(
+                                name: 'Syringe',
+                                image: "Assets/Icons/syringe.png",
+                                isSelected: snapshot.data == MedicineType.syringe
+                                    ? true
+                                    : false,
+                                medicineType: MedicineType.syringe,
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              MedicineTypee(
+                                name: 'Nasal',
+                                image: "Assets/Icons/nasal-spray (1).png",
+                                isSelected: snapshot.data == MedicineType.nasal
+                                    ? true
+                                    : false,
+                                medicineType: MedicineType.nasal,
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              MedicineTypee(
+                                name: 'Eye Drops',
+                                image: "Assets/Icons/eye-drops.png",
+                                isSelected: snapshot.data == MedicineType.eyeDrops
+                                    ? true
+                                    : false,
+                                medicineType: MedicineType.eyeDrops,
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              MedicineTypee(
+                                name: 'Ear Drops',
+                                image: "Assets/Icons/ear-drops.png",
+                                isSelected: snapshot.data == MedicineType.earDrops
+                                    ? true
+                                    : false,
+                                medicineType: MedicineType.earDrops,
+                              )
+                            ],
+                          );
+                        }),
                   ),
                 ),
-                style: TextStyle(
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.normal,
-                    color: kTextColor),
-                cursorColor: kMainColor,
-              ),
-              SizedBox(
-                height: 1.h,
-              ),
-              const PanelTitle(
-                title: 'Dosage in mg ',
-                isRequired: false,
-              ),
-              SizedBox(
-                height: 1.h,
-              ),
-              TextFormField(
-                controller: dosageController,
-                keyboardType: TextInputType.number,
-                maxLength: 5,
-                decoration: const InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: kColor, width: 2.5)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: kMainColor, width: 2.5)),
-                  hintText: 'Enter dosage in mg',
-                  hintStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: kMainColor,
-                  ),
+                SizedBox(
+                  height: 2.2.h,
                 ),
-                style: TextStyle(
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.normal,
-                    color: kTextColor),
-                cursorColor: kMainColor,
-              ),
-              SizedBox(
-                height: 1.h,
-              ),
-              const PanelTitle(title: 'Medicine Type', isRequired: false),
-              SizedBox(
-                height: 1.h,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 2),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: StreamBuilder<MedicineType>(
-                      stream: _newEntryBloc.selectedMedicineType,
-                      builder: (context, snapshot) {
-                        return Row(
-                          children: [
-                            MedicineTypee(
-                              name: 'Pills',
-                              image: "Assets/Icons/pills.png",
-                              isSelected: snapshot.data == MedicineType.pills
-                                  ? true
-                                  : false,
-                              medicineType: MedicineType.pills,
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            MedicineTypee(
-                              name: 'Syrup',
-                              image: "Assets/Icons/syrup.png",
-                              isSelected: snapshot.data == MedicineType.syrup
-                                  ? true
-                                  : false,
-                              medicineType: MedicineType.syrup,
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            MedicineTypee(
-                              name: 'Syringe',
-                              image: "Assets/Icons/syringe.png",
-                              isSelected: snapshot.data == MedicineType.syringe
-                                  ? true
-                                  : false,
-                              medicineType: MedicineType.syringe,
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            MedicineTypee(
-                              name: 'Nasal',
-                              image: "Assets/Icons/nasal-spray (1).png",
-                              isSelected: snapshot.data == MedicineType.nasal
-                                  ? true
-                                  : false,
-                              medicineType: MedicineType.nasal,
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            MedicineTypee(
-                              name: 'Eye Drops',
-                              image: "Assets/Icons/eye-drops.png",
-                              isSelected: snapshot.data == MedicineType.eyeDrops
-                                  ? true
-                                  : false,
-                              medicineType: MedicineType.eyeDrops,
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            MedicineTypee(
-                              name: 'Ear Drops',
-                              image: "Assets/Icons/ear-drops.png",
-                              isSelected: snapshot.data == MedicineType.earDrops
-                                  ? true
-                                  : false,
-                              medicineType: MedicineType.earDrops,
-                            )
-                          ],
-                        );
-                      }),
+                const PanelTitle(title: "Interval Selection", isRequired: true),
+                const IntervalSelection(),
+                const PanelTitle(title: "Starting Time", isRequired: true),
+                const SelectTime(),
+                SizedBox(
+                  height: 1.h,
                 ),
-              ),
-              SizedBox(
-                height: 2.2.h,
-              ),
-              const PanelTitle(title: "Interval Selection", isRequired: true),
-              const IntervalSelection(),
-              const PanelTitle(title: "Starting Time", isRequired: true),
-              const SelectTime(),
-              SizedBox(
-                height: 1.h,
-              ),
-              const ConfirmButton()
-            ],
+                const ConfirmButton()
+              ],
+            ),
           ),
         ),
       ),
