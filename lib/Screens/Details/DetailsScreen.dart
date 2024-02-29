@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medication_reminder/Widgets/ExtendedSection.dart';
 import 'package:medication_reminder/Widgets/MainSectionInfo.dart';
 import 'package:sizer/sizer.dart';
 import '../../Core/Constants/Constants.dart';
@@ -33,10 +34,14 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen> {
         backgroundColor: kPrimaryColor,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 30, right: 30, left: 30),
+        padding: EdgeInsets.all(3.h),
         child: Column(
           children: [
-            MainSectionInfo(),
+            const MainSectionInfo(),
+            SizedBox(
+              height: 4.h,
+            ),
+            const ExtendedSection()
           ],
         ),
       ),
