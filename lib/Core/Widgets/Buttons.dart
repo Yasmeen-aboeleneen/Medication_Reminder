@@ -41,7 +41,10 @@ class DeleteButton extends StatelessWidget {
       child: SizedBox(
         height: 7.h,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            // open alert dialog box
+            openAlertBox(context);
+          },
           child: Center(
             child: Text(
               'Delete',
@@ -56,5 +59,46 @@ class DeleteButton extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  openAlertBox(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(35),
+                    bottomRight: Radius.circular(35))),
+            contentPadding: EdgeInsets.only(top: 2.h),
+            backgroundColor: kScaffold,
+            title: Text(
+              "Delete This Reminder?",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: kPrimaryColor,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(color: kCccolor, fontSize: 16.sp),
+                  )),
+              TextButton(
+                  onPressed: () {
+                    //global block to delete info
+                  },
+                  child: Text(
+                    'Ok',
+                    style: TextStyle(color: kPrimaryColor, fontSize: 16.sp),
+                  ))
+            ],
+          );
+        });
   }
 }

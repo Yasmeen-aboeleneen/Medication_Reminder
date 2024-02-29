@@ -24,7 +24,7 @@ class BottomContainer extends StatelessWidget {
       child: GridView.builder(
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemCount: 10,
+        itemCount: 3,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.all(5),
