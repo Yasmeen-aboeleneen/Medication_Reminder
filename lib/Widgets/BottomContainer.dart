@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medication_reminder/Screens/Details/DetailsScreen.dart';
 import 'package:medication_reminder/Widgets/MedicineCard.dart';
 import 'package:sizer/sizer.dart';
 
@@ -30,7 +31,13 @@ class BottomContainer extends StatelessWidget {
             child: InkWell(
                 splashColor: Colors.grey,
                 highlightColor: Colors.white,
-                onTap: () {},
+                onTap: () {
+                  // go to details page
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MedicineDetailsScreen()));
+                },
                 child: const MedicineCard()),
           );
         },
