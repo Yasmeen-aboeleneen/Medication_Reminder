@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Widgets/MainInfoTable.dart';
+import 'package:medication_reminder/Widgets/MainSectionInfo.dart';
 import 'package:sizer/sizer.dart';
-
 import '../../Core/Constants/Constants.dart';
 
 class MedicineDetailsScreen extends StatefulWidget {
@@ -37,28 +36,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen> {
         padding: const EdgeInsets.only(top: 30, right: 30, left: 30),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.asset(
-                  'Assets/Icons/pills.png',
-                  height: 9.h,
-                ),
-                Column(
-                  children: [
-                    const MainInfoTable(
-                      fieldTitle: 'Medicine name',
-                      fieldInfo: 'Panadol',
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    const MainInfoTable(
-                        fieldTitle: "Dosage", fieldInfo: "500 mg"),
-                  ],
-                )
-              ],
-            )
+            MainSectionInfo(),
           ],
         ),
       ),
