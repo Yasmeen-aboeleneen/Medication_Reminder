@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medication_reminder/Core/Widgets/Buttons.dart';
 import 'package:medication_reminder/Widgets/ExtendedSection.dart';
 import 'package:medication_reminder/Widgets/MainSectionInfo.dart';
 import 'package:sizer/sizer.dart';
@@ -41,7 +42,9 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen> {
             SizedBox(
               height: 4.h,
             ),
-            const ExtendedSection()
+            const ExtendedSection(),
+            const Spacer(),
+            const DeleteButton()
           ],
         ),
       ),

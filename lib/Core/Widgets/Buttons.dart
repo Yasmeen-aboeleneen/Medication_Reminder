@@ -30,3 +30,31 @@ class ConfirmButton extends StatelessWidget {
     );
   }
 }
+
+class DeleteButton extends StatelessWidget {
+  const DeleteButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(right: 18.w, left: 18.w),
+      child: SizedBox(
+        height: 7.h,
+        child: TextButton(
+          onPressed: () {},
+          child: Center(
+            child: Text(
+              'Delete',
+              style: TextStyle(
+                  color: kScaffold,
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+          style: TextButton.styleFrom(
+              backgroundColor: kMainColor, shape: const StadiumBorder()),
+        ),
+      ),
+    );
+  }
+}
