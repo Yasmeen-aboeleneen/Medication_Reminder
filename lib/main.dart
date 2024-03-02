@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/Constants.dart';
+import 'package:medication_reminder/Core/Utils/Global_Bloc.dart';
 import 'package:medication_reminder/Screens/NewEntry_Bloc.dart';
 
 import 'package:medication_reminder/Splash/SplashScreen.dart';
@@ -18,18 +19,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  NewEntryBloc? newEntryBloc;
+  GlobalBloc? globalBloc;
 
   @override
   void initState() {
-    newEntryBloc = NewEntryBloc();
+    globalBloc = GlobalBloc();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Provider<NewEntryBloc>.value(
-      value: newEntryBloc!,
+    return Provider<GlobalBloc>.value(
+      value: globalBloc!,
       child: Sizer(
         builder: (BuildContext context, Orientation orientation,
             DeviceType deviceType) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/Constants.dart';
+import 'package:medication_reminder/Core/Utils/Global_Bloc.dart';
 import 'package:medication_reminder/Core/Widgets/Buttons.dart';
 import 'package:medication_reminder/Screens/NewEntry_Bloc.dart';
 import 'package:medication_reminder/Widgets/IntervalSelection.dart';
@@ -43,9 +44,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
     return Scaffold(
       key: _scaffoldKey,
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: 9.h,
         elevation: 0,
@@ -171,9 +173,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                               MedicineTypee(
                                 name: 'Syringe',
                                 image: "Assets/Icons/syringe.png",
-                                isSelected: snapshot.data == MedicineType.syringe
-                                    ? true
-                                    : false,
+                                isSelected:
+                                    snapshot.data == MedicineType.syringe
+                                        ? true
+                                        : false,
                                 medicineType: MedicineType.syringe,
                               ),
                               SizedBox(
@@ -193,9 +196,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                               MedicineTypee(
                                 name: 'Eye Drops',
                                 image: "Assets/Icons/eye-drops.png",
-                                isSelected: snapshot.data == MedicineType.eyeDrops
-                                    ? true
-                                    : false,
+                                isSelected:
+                                    snapshot.data == MedicineType.eyeDrops
+                                        ? true
+                                        : false,
                                 medicineType: MedicineType.eyeDrops,
                               ),
                               SizedBox(
@@ -204,9 +208,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                               MedicineTypee(
                                 name: 'Ear Drops',
                                 image: "Assets/Icons/ear-drops.png",
-                                isSelected: snapshot.data == MedicineType.earDrops
-                                    ? true
-                                    : false,
+                                isSelected:
+                                    snapshot.data == MedicineType.earDrops
+                                        ? true
+                                        : false,
                                 medicineType: MedicineType.earDrops,
                               )
                             ],
