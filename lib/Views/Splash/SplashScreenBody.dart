@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:medication_reminder/Screens/Views/Home/HomeScreen.dart';
+import 'package:medication_reminder/Views/Home/HomeScreen.dart';
  
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({super.key});

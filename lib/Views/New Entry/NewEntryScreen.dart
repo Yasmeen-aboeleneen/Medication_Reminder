@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Screens/NewEntryScreenBody.dart';
+import 'package:medication_reminder/Views/New%20Entry/NewEntryScreenBody.dart';
 
 class NewEntryScreen extends StatefulWidget {
   const NewEntryScreen({super.key});

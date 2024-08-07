@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Screens/Views/Widgets/MainInfoTable.dart';
+import 'package:medication_reminder/Views/Widgets/MainInfoTable.dart';
 import 'package:sizer/sizer.dart';
 
 class MainSectionInfo extends StatelessWidget {

@@ -1,7 +1,7 @@
-import 'package:medication_reminder/Screens/Views/Widgets/Medicine_Type.dart';
+import 'package:medication_reminder/Views/Widgets/Medicine_Type.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../Common/Errors.dart';
+import '../../Common/Errors.dart';
 
 class NewEntryBloc {
   BehaviorSubject<MedicineType>? _selectedMedicineType$;

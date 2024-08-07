@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/Constants.dart';
-import 'package:medication_reminder/Screens/NewEntryScreen.dart';
-import 'package:medication_reminder/Screens/Views/Widgets/BottomContainer.dart';
-
-import 'package:medication_reminder/Screens/Views/Widgets/HeaderPart.dart';
-import 'package:medication_reminder/Screens/Views/Widgets/TopCounter.dart';
+import 'package:medication_reminder/Views/New%20Entry/NewEntryScreen.dart';
+import 'package:medication_reminder/Views/Widgets/BottomContainer.dart';
+import 'package:medication_reminder/Views/Widgets/HeaderPart.dart';
+import 'package:medication_reminder/Views/Widgets/TopCounter.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreenBody extends StatelessWidget {
@@ -25,7 +24,7 @@ class HomeScreenBody extends StatelessWidget {
             height: 9.h,
             child: Card(
               shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.circular(2.h)),
+                  borderRadius: BorderRadius.circular(1.5.h)),
               color: kPrimaryColor,
               child: Icon(
                 Icons.add_outlined,
