@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Widgets/Medicine_Type.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/Medicine_Type.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 

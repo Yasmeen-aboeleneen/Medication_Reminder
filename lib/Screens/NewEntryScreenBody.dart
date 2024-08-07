@@ -3,14 +3,14 @@ import 'package:medication_reminder/Core/Constants/Constants.dart';
 import 'package:medication_reminder/Core/Utils/Global_Bloc.dart';
 import 'package:medication_reminder/Core/Widgets/Buttons.dart';
 import 'package:medication_reminder/Screens/NewEntry_Bloc.dart';
-import 'package:medication_reminder/Widgets/IntervalSelection.dart';
-import 'package:medication_reminder/Widgets/PanelTitle.dart';
-import 'package:medication_reminder/Widgets/SelectTime.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/IntervalSelection.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/PanelTitle.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/SelectTime.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../Widgets/MedicineType.dart';
-import '../Widgets/Medicine_Type.dart';
+import 'Views/Widgets/MedicineType.dart';
+import 'Views/Widgets/Medicine_Type.dart';
 
 class NewEntryScreenBody extends StatefulWidget {
   const NewEntryScreenBody({super.key});

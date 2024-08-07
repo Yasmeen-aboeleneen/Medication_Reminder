@@ -1,4 +1,4 @@
-import 'package:medication_reminder/Widgets/Medicine_Type.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/Medicine_Type.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../Common/Errors.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/Constants.dart';
 
-import '../../Core/Utils/Size_Config.dart';
+import '../../../../Core/Utils/Size_Config.dart';
 
 class HeaderPart extends StatelessWidget {
   const HeaderPart({super.key});

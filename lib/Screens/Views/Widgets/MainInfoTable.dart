@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import '../Core/Constants/Constants.dart';
+import '../../../Core/Constants/Constants.dart';
 
 class MainInfoTable extends StatelessWidget {
   const MainInfoTable(

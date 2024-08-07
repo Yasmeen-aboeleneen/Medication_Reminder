@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Widgets/Buttons.dart';
-import 'package:medication_reminder/Widgets/ExtendedSection.dart';
-import 'package:medication_reminder/Widgets/MainSectionInfo.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/ExtendedSection.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/MainSectionInfo.dart';
 import 'package:sizer/sizer.dart';
-import '../../Core/Constants/Constants.dart';
+import '../../../Core/Constants/Constants.dart';
 
 class MedicineDetailsScreen extends StatefulWidget {
   const MedicineDetailsScreen({super.key});

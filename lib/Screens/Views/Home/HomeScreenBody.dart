@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/Constants.dart';
 import 'package:medication_reminder/Screens/NewEntryScreen.dart';
-import 'package:medication_reminder/Widgets/BottomContainer.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/BottomContainer.dart';
 
-import 'package:medication_reminder/Widgets/HeaderPart.dart';
-import 'package:medication_reminder/Widgets/TopCounter.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/HeaderPart.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/TopCounter.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreenBody extends StatelessWidget {

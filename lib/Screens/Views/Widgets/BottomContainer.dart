@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Screens/Details/DetailsScreen.dart';
-import 'package:medication_reminder/Widgets/MedicineCard.dart';
+import 'package:medication_reminder/Screens/Views/Details/DetailsScreen.dart';
+import 'package:medication_reminder/Screens/Views/Widgets/MedicineCard.dart';
 import 'package:sizer/sizer.dart';
 
 class BottomContainer extends StatelessWidget {
