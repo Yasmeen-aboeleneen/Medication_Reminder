@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 const Color kTextColor = Colors.black;
 const Color kPrimaryColor = Color.fromARGB(255, 99, 4, 4);
 const Color kMainColor = Color.fromARGB(255, 114, 12, 12);
+const Color Kblue = const Color.fromARGB(255, 59, 156, 235);
 const Color kSecondaryColor = Color.fromARGB(255, 249, 246, 246);
 const Color kScaffold = Color.fromARGB(255, 255, 255, 255);
 const Color kColor = Colors.black;
