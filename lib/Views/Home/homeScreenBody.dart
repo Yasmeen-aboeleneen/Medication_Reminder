@@ -4,14 +4,16 @@ import 'package:medication_reminder/Views/New%20Entry/NewEntryScreen.dart';
 import 'package:medication_reminder/Views/Widgets/BottomContainer.dart';
 import 'package:medication_reminder/Views/Widgets/HeaderPart.dart';
 import 'package:medication_reminder/Views/Widgets/TopCounter.dart';
-import 'package:sizer/sizer.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var h = MediaQuery.of(context).size.height;
+    var w = MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: kScaffold,
         floatingActionButton: InkResponse(
           onTap: () {
             Navigator.push(
@@ -20,28 +22,30 @@ class HomeScreenBody extends StatelessWidget {
                     builder: (context) => const NewEntryScreen()));
           },
           child: SizedBox(
-            width: 19.w,
-            height: 9.h,
+            width: w * .2,
+            height: h * .1,
             child: Card(
-              shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.circular(1.5.h)),
+              shadowColor: kColor,
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
               color: kPrimaryColor,
               child: Icon(
-                Icons.add_outlined,
-                size: 50.sp,
-                color: kSecondaryColor,
+                Icons.add_rounded,
+                size: w * .12,
+                color: kScaffold,
               ),
             ),
           ),
         ),
-        body: Column(children: [
-          const HeaderPart(),
+        body: const Column(children: [
+          HeaderPart(),
           SizedBox(
-            height: 1.5.h,
+            height: 1.5,
           ),
-          const TopCounter(),
-          SizedBox(height: .2.h),
-          const Expanded(child: BottomContainer()),
+          TopCounter(),
+          SizedBox(height: .2),
+          Expanded(child: BottomContainer()),
         ]));
   }
 }

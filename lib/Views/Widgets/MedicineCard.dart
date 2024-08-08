@@ -31,7 +31,7 @@ class MedicineCard extends StatelessWidget {
             textAlign: TextAlign.start,
             'Panadol',
             style: TextStyle(
-                color: kMainColor,
+                color: Kblue,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1),

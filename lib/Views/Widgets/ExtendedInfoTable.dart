@@ -29,7 +29,7 @@ class ExtendedInfoTable extends StatelessWidget {
           Text(
             fieldinfo,
             style: TextStyle(
-                color: kMainColor,
+                color: kPrimaryColor,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 1),

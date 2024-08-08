@@ -13,11 +13,7 @@ class ConfirmButton extends StatelessWidget {
       child: SizedBox(
         height: 7.h,
         child: TextButton(
-          onPressed: () {
-
-                  
-
-          },
+          onPressed: () {},
           child: Center(
             child: Text(
               'Confirm',
@@ -28,7 +24,7 @@ class ConfirmButton extends StatelessWidget {
             ),
           ),
           style: TextButton.styleFrom(
-              backgroundColor: kMainColor, shape: const StadiumBorder()),
+              backgroundColor: kPrimaryColor, shape: const StadiumBorder()),
         ),
       ),
     );
@@ -59,7 +55,7 @@ class DeleteButton extends StatelessWidget {
             ),
           ),
           style: TextButton.styleFrom(
-              backgroundColor: kMainColor, shape: const StadiumBorder()),
+              backgroundColor: kPrimaryColor, shape: const StadiumBorder()),
         ),
       ),
     );

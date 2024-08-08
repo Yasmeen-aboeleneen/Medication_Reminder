@@ -27,7 +27,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
           ),
         ),
         DropdownButton(
-            iconEnabledColor: kMainColor,
+            iconEnabledColor: kPrimaryColor,
             dropdownColor: kScaffold,
             itemHeight: 8.h,
             hint: _selected == 0
@@ -35,7 +35,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
                     'Select an interval',
                     style: TextStyle(
                         fontSize: 11.5.sp,
-                        color: kMainColor,
+                        color: kPrimaryColor,
                         fontWeight: FontWeight.w500),
                   )
                 : null,
@@ -49,7 +49,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
                     style: TextStyle(
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w300,
-                      color: kMainColor,
+                      color: kPrimaryColor,
                     ),
                   ));
             }).toList(),

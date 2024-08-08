@@ -8,6 +8,7 @@ class TopCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var w = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -15,21 +16,23 @@ class TopCounter extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Container(
             alignment: Alignment.topLeft,
-            child: const Text(
-              'Live Healthier!',
+            child: Text(
+              'Medicine',
               style: TextStyle(
-                  fontSize: 28, fontWeight: FontWeight.bold, color: kColor),
+                  fontSize: w * .07,
+                  fontWeight: FontWeight.w500,
+                  color: kColor),
             ),
           ),
         ),
         SizedBox(
           height: 1.5.h,
         ),
-        const Center(
+        Center(
           child: Text(
             '0',
             style: TextStyle(
-                fontSize: 35, fontWeight: FontWeight.bold, color: kColor),
+                fontSize: w * .1, fontWeight: FontWeight.bold, color: kColor),
           ),
         )
       ],

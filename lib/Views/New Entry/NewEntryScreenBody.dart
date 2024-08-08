@@ -86,19 +86,19 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: kColor, width: 2.5)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kMainColor, width: 2.5)),
+                        borderSide: BorderSide(color: kPrimaryColor, width: 2.5)),
                     hintText: 'Enter Medicine Name',
                     hintStyle: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: kMainColor,
+                      color: kPrimaryColor,
                     ),
                   ),
                   style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.normal,
                       color: kTextColor),
-                  cursorColor: kMainColor,
+                  cursorColor: kPrimaryColor,
                 ),
                 SizedBox(
                   height: 1.h,
@@ -118,19 +118,19 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: kColor, width: 2.5)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kMainColor, width: 2.5)),
+                        borderSide: BorderSide(color: kPrimaryColor, width: 2.5)),
                     hintText: 'Enter dosage in mg',
                     hintStyle: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: kMainColor,
+                      color:kPrimaryColor,
                     ),
                   ),
                   style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.normal,
                       color: kTextColor),
-                  cursorColor: kMainColor,
+                  cursorColor: kPrimaryColor,
                 ),
                 SizedBox(
                   height: 1.h,

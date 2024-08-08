@@ -49,7 +49,7 @@ class _SelectTimeState extends State<SelectTime> {
             ),
           ),
           style: TextButton.styleFrom(
-              backgroundColor: kMainColor, shape: const StadiumBorder()),
+              backgroundColor:kPrimaryColor, shape: const StadiumBorder()),
         ),
       ),
     );

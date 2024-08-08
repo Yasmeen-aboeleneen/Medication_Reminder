@@ -48,7 +48,7 @@ class MedicineTypee extends StatelessWidget {
               child: Text(
                 name,
                 style: TextStyle(
-                    color: kMainColor,
+                    color: kPrimaryColor,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400),
               ),
