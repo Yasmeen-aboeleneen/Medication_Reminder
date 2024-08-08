@@ -19,10 +19,10 @@ class SplashScreenBody extends StatelessWidget {
             height: h * .59,
             child: Image.asset(
               "Assets/Images/img.png",
-              height: h * .5,
+              height: h * .55,
             ),
           ),
-          SizedBox(height: h * .03),
+          SizedBox(height: h * .09),
           Padding(
             padding: const EdgeInsets.only(left: 19, right: 19),
             child: Container(
