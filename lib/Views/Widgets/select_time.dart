@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medication_reminder/Common/ConvertTime.dart';
+import 'package:medication_reminder/Common/convert_time.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:sizer/sizer.dart';
 
@@ -13,11 +13,31 @@ class SelectTime extends StatefulWidget {
 
 class _SelectTimeState extends State<SelectTime> {
   TimeOfDay _time = const TimeOfDay(hour: 0, minute: 00);
-
   bool _clicked = false;
+
   Future<TimeOfDay> _selectTime() async {
-    final TimeOfDay? picked =
-        await showTimePicker(context: context, initialTime: _time);
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _time,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            colorScheme: const ColorScheme.dark(
+              primary: kveryWhite,
+              onPrimary: kBlack,
+              onSurface: kveryWhite,
+            ),
+            dialogBackgroundColor: kveryWhite,
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                foregroundColor: kveryWhite,
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
 
     if (picked != null && picked != _time) {
       setState(() {

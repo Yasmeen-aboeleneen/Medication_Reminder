@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
-import 'package:medication_reminder/Core/Widgets/Buttons.dart';
+import 'package:medication_reminder/Core/Widgets/custom_button.dart';
 import 'package:medication_reminder/Views/New%20Entry/new_entry_bloc.dart';
-import 'package:medication_reminder/Views/Widgets/IntervalSelection.dart';
+import 'package:medication_reminder/Views/Widgets/interval_selection.dart';
 import 'package:medication_reminder/Views/Widgets/PanelTitle.dart';
 import 'package:medication_reminder/Views/Widgets/select_time.dart';
 import 'package:medication_reminder/Views/Widgets/custom_text_field.dart';
@@ -94,8 +94,14 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                 const IntervalSelection(),
                 const PanelTitle(title: "Starting Time", isRequired: true),
                 const SelectTime(),
-                SizedBox(height: 1.h),
-                const ConfirmButton(),
+                SizedBox(height: 1.5.h),
+                Center(
+                  child: CustomButton(
+                    text: 'Confirm',
+                    onTap: () {},
+                    colors: const [kLightPurple, kPrimary, kPrimary],
+                  ),
+                )
               ],
             ),
           ),

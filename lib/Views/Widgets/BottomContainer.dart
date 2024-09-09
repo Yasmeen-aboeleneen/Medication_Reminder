@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Views/Details/DetailsScreen.dart';
-import 'package:medication_reminder/Views/Widgets/MedicineCard.dart';
+ import 'package:medication_reminder/Views/Widgets/MedicineCard.dart';
 import 'package:sizer/sizer.dart';
 
 class BottomContainer extends StatelessWidget {
@@ -23,10 +22,10 @@ class BottomContainer extends StatelessWidget {
                 highlightColor: Colors.white,
                 onTap: () {
                   // go to details page
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MedicineDetailsScreen()));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => const MedicineDetailsScreen()));
                 },
                 child: const MedicineCard()),
           );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
- import 'package:sizer/sizer.dart';
+import 'package:medication_reminder/Core/Constants/colors.dart';
+import 'package:sizer/sizer.dart';
 
 class IntervalSelection extends StatefulWidget {
   const IntervalSelection({super.key});
@@ -20,19 +21,19 @@ class _IntervalSelectionState extends State<IntervalSelection> {
         Text(
           'Remind me every',
           style: TextStyle(
-             fontSize: 12.5.sp,
+            fontSize: 12.5.sp,
             fontWeight: FontWeight.w600,
           ),
         ),
         DropdownButton(
-            
+            dropdownColor: kveryWhite,
+            borderRadius: BorderRadius.circular(25),
             itemHeight: 8.h,
             hint: _selected == 0
                 ? Text(
                     'Select an interval',
                     style: TextStyle(
-                        fontSize: 11.5.sp,
-                         fontWeight: FontWeight.w500),
+                        fontSize: 11.5.sp, fontWeight: FontWeight.w500),
                   )
                 : null,
             elevation: 3,
@@ -45,7 +46,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
                     style: TextStyle(
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w300,
-                     ),
+                    ),
                   ));
             }).toList(),
             onChanged: (newVal) {
@@ -56,7 +57,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
         Text(
           _selected == 1 ? 'Hour' : 'Hours',
           style: TextStyle(
-             fontSize: 12.5.sp,
+            fontSize: 12.5.sp,
             fontWeight: FontWeight.w600,
           ),
         )

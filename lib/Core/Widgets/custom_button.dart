@@ -8,9 +8,11 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onTap,
+    required this.colors,  
   });
   final String text;
   final void Function()? onTap;
+  final List<Color> colors;
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
@@ -20,9 +22,9 @@ class CustomButton extends StatelessWidget {
       child: Container(
         height: h * .05,
         width: w * .28,
-        decoration: const BoxDecoration(
-            color: kveryWhite,
-            borderRadius: BorderRadius.all(Radius.circular(25))),
+        decoration: BoxDecoration(
+           gradient: LinearGradient(colors: colors),
+            borderRadius: const BorderRadius.all(Radius.circular(25))),
         child: Center(
           child: Text(
             text,
