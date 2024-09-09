@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Widgets/custom_app_bar.dart';
-import 'package:medication_reminder/Views/Home/homeScreenBody.dart';
- 
+import 'package:medication_reminder/Views/Home/home_screen_body.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,8 +8,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double appBarHeight = MediaQuery.of(context).size.height * .35;
-    // var h = MediaQuery.of(context).size.height;
-    // var w = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Stack(

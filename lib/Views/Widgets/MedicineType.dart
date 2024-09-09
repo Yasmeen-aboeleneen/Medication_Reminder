@@ -4,7 +4,7 @@ import 'package:medication_reminder/Core/Utils/Classes/medicine_type.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import 'package:medication_reminder/Views/New%20Entry/NewEntry_Bloc.dart';
+import 'package:medication_reminder/Views/New%20Entry/new_entry_bloc.dart';
 
 class MedicineTypee extends StatelessWidget {
   const MedicineTypee({

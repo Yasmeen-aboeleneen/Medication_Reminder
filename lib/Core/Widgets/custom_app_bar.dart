@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:medication_reminder/Core/Widgets/custom_button.dart';
-import 'package:medication_reminder/Views/New%20Entry/NewEntryScreen.dart';
+import 'package:medication_reminder/Views/New%20Entry/new_entry_screen.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});

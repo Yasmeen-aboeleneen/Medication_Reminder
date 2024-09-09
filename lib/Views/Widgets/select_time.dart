@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
- import 'package:medication_reminder/Core/Constants/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:medication_reminder/Common/ConvertTime.dart';
+import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:sizer/sizer.dart';
-import '../../Common/ConvertTime.dart';
 
 class SelectTime extends StatefulWidget {
   const SelectTime({super.key});
@@ -29,25 +30,26 @@ class _SelectTimeState extends State<SelectTime> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 7.h,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 8.0, left: 30, right: 30),
-        child: TextButton(
-          onPressed: () {
-            _selectTime();
-          },
-          style: TextButton.styleFrom(
-              backgroundColor: kPrimary, shape: const StadiumBorder()),
+    return Padding(
+      padding: EdgeInsets.only(top: 2.h, left: 10.w, right: 10.w),
+      child: GestureDetector(
+        onTap: () {
+          _selectTime();
+        },
+        child: Container(
+          height: 7.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              gradient: const LinearGradient(
+                  colors: [kPrimary, kLightPurple, kLightPurple])),
           child: Center(
             child: Text(
               _clicked == false
                   ? 'Select Time'
                   : '${convertTime(_time.hour.toString())}:${convertTime(_time.minute.toString())}',
-              style: TextStyle(
-                  
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w600),
+              style: GoogleFonts.aBeeZee(
+                  color: kBlack, fontWeight: FontWeight.bold, fontSize: 15.sp),
             ),
           ),
         ),

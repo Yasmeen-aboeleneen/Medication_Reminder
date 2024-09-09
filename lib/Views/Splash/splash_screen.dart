@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
-import 'package:medication_reminder/Views/Home/HomeScreen.dart';
+import 'package:medication_reminder/Views/Home/home_screen.dart';
  
 
 class SplashScreen extends StatefulWidget {

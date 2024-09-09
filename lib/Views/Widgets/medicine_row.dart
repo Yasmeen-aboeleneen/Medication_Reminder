@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Utils/Classes/medicine_type.dart';
-import 'package:medication_reminder/Views/New%20Entry/NewEntry_Bloc.dart';
+import 'package:medication_reminder/Views/New%20Entry/new_entry_bloc.dart';
 import 'package:medication_reminder/Views/Widgets/MedicineType.dart';
 import 'package:sizer/sizer.dart';
 

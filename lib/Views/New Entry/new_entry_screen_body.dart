@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:medication_reminder/Core/Widgets/Buttons.dart';
-import 'package:medication_reminder/Views/New%20Entry/NewEntry_Bloc.dart';
+import 'package:medication_reminder/Views/New%20Entry/new_entry_bloc.dart';
 import 'package:medication_reminder/Views/Widgets/IntervalSelection.dart';
 import 'package:medication_reminder/Views/Widgets/PanelTitle.dart';
-import 'package:medication_reminder/Views/Widgets/SelectTime.dart';
+import 'package:medication_reminder/Views/Widgets/select_time.dart';
 import 'package:medication_reminder/Views/Widgets/custom_text_field.dart';
 import 'package:medication_reminder/Views/Widgets/medicine_row.dart';
 import 'package:provider/provider.dart';

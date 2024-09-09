@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
  import 'package:medication_reminder/Core/Utils/Global_Bloc.dart';
-import 'package:medication_reminder/Views/Splash/SplashScreen.dart';
+import 'package:medication_reminder/Views/Splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
