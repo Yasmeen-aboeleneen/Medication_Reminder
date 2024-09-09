@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
  import 'package:medication_reminder/Core/Utils/Global_Bloc.dart';
 import 'package:medication_reminder/Views/Splash/SplashScreen.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       child: Sizer(
         builder: (BuildContext context, Orientation orientation,
             DeviceType deviceType) {
-          return const MaterialApp(
+          return const GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Medication Reminder',
             home: SplashScreen(),

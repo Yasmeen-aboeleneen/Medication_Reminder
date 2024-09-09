@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
+import 'package:medication_reminder/Core/Widgets/custom_button.dart';
+import 'package:medication_reminder/Views/New%20Entry/NewEntryScreen.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -20,7 +23,7 @@ class CustomAppBar extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: h * .03,
+            top: h * .04,
             child: Padding(
               padding: EdgeInsets.only(top: h * .06, left: w * .03),
               child: Column(
@@ -43,12 +46,12 @@ class CustomAppBar extends StatelessWidget {
                     SizedBox(
                       height: h * .02,
                     ),
-                    // CustomButton(
-                    //   text: 'Add',
-                    //   onTap: () {
-                    //     Get.to(() => const AddPills());
-                    //   },
-                    // ),
+                    CustomButton(
+                      text: 'Add',
+                      onTap: () {
+                        Get.to(() => const NewEntryScreen());
+                      },
+                    ),
                   ]),
             ),
           ),
@@ -57,7 +60,7 @@ class CustomAppBar extends StatelessWidget {
             bottom: 0,
             top: 0,
             child: Image.asset(
-              'assets/images/pic2.png',
+              'Assets/Images/pic2.png',
               fit: BoxFit.cover,
               width: w * .4,
               height: h * .4,

@@ -70,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(height: h * 0.05),
             AnimatedOpacity(
               opacity: _textOpacity,
-              duration: const Duration(seconds: 2), // Duration for text fade-in
+              duration: const Duration(seconds: 2), 
               child: Text(
                 'We take care of\n your regular medication',
                 textAlign: TextAlign.center,

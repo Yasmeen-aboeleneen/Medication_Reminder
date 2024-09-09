@@ -8,17 +8,7 @@ class BottomContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return const Flexible(
-    //   child: Text(
-    //     'You are in a good health🥰 ',
-    //     style: TextStyle(
-    //       fontSize: 25,
-    //       color: kMainColor,
-    //       fontWeight: FontWeight.w500,
-    //     ),
-    //     textAlign: TextAlign.center,
-    //   ),
-    // );
+    
     return Padding(
       padding: EdgeInsets.only(top: 1.h),
       child: GridView.builder(
