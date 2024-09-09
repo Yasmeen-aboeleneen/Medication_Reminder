@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Core/Constants/Constants.dart';
-
+ 
 class HeaderPart extends StatelessWidget {
   const HeaderPart({super.key});
 
@@ -12,7 +11,7 @@ class HeaderPart extends StatelessWidget {
         height: h * .15,
         width: w,
         decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [kColor, Kblue]),
+          
             borderRadius: BorderRadiusDirectional.only(
               bottomEnd: Radius.circular(50),
             )),
@@ -30,7 +29,7 @@ class HeaderPart extends StatelessWidget {
                 style: TextStyle(
                     fontSize: w * .09,
                     fontWeight: FontWeight.bold,
-                    color: kScaffold),
+                 ),
               ),
             ),
           ],

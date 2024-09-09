@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Core/Constants/Constants.dart';
+import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:medication_reminder/Views/New%20Entry/NewEntryScreen.dart';
 import 'package:medication_reminder/Views/Widgets/BottomContainer.dart';
 import 'package:medication_reminder/Views/Widgets/HeaderPart.dart';
@@ -13,7 +13,7 @@ class HomeScreenBody extends StatelessWidget {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: kScaffold,
+        backgroundColor: kveryWhite,
         floatingActionButton: InkResponse(
           onTap: () {
             Navigator.push(
@@ -25,15 +25,12 @@ class HomeScreenBody extends StatelessWidget {
             width: w * .2,
             height: h * .1,
             child: Card(
-              shadowColor: kColor,
               elevation: 10,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
-              color: kPrimaryColor,
               child: Icon(
                 Icons.add_rounded,
                 size: w * .12,
-                color: kScaffold,
               ),
             ),
           ),

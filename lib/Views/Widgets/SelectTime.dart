@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Core/Constants/Constants.dart';
+ import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:sizer/sizer.dart';
 import '../../Common/ConvertTime.dart';
 
@@ -37,19 +37,19 @@ class _SelectTimeState extends State<SelectTime> {
           onPressed: () {
             _selectTime();
           },
+          style: TextButton.styleFrom(
+              backgroundColor: kPrimary, shape: const StadiumBorder()),
           child: Center(
             child: Text(
               _clicked == false
                   ? 'Select Time'
                   : '${convertTime(_time.hour.toString())}:${convertTime(_time.minute.toString())}',
               style: TextStyle(
-                  color: kScaffold,
+                  
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w600),
             ),
           ),
-          style: TextButton.styleFrom(
-              backgroundColor:kPrimaryColor, shape: const StadiumBorder()),
         ),
       ),
     );

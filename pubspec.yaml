@@ -33,6 +33,7 @@ dependencies:
     sdk: flutter
   flutter_native_splash: ^2.3.9
   flutter_svg: ^2.0.9
+  google_fonts: ^6.2.1
   lottie: ^3.0.0
   provider: ^6.1.1
   rxdart: ^0.27.7
@@ -55,15 +56,14 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - Assets\Images\Splash.jpeg
+    - Assets\Images\pic1.png
     - Assets\Icons\ear-drops.png
     - Assets\Icons\eye-drops.png
     - Assets\Icons\nasal-spray (1).png
     - Assets\Icons\pills.png
     - Assets\Icons\syringe.png
     - Assets\Icons\syrup.png
-    - Assets\Images\img.png
-  
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

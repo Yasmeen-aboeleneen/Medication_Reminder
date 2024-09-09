@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:sizer/sizer.dart';
-
-import '../Constants/Constants.dart';
 
 class ConfirmButton extends StatelessWidget {
   const ConfirmButton({super.key});
@@ -17,14 +16,11 @@ class ConfirmButton extends StatelessWidget {
           child: Center(
             child: Text(
               'Confirm',
-              style: TextStyle(
-                  color: kScaffold,
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600),
             ),
           ),
           style: TextButton.styleFrom(
-              backgroundColor: kPrimaryColor, shape: const StadiumBorder()),
+              backgroundColor: kPrimary, shape: const StadiumBorder()),
         ),
       ),
     );
@@ -48,14 +44,10 @@ class DeleteButton extends StatelessWidget {
           child: Center(
             child: Text(
               'Delete',
-              style: TextStyle(
-                  color: kScaffold,
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600),
             ),
           ),
-          style: TextButton.styleFrom(
-              backgroundColor: kPrimaryColor, shape: const StadiumBorder()),
+          style: TextButton.styleFrom(shape: const StadiumBorder()),
         ),
       ),
     );
@@ -71,14 +63,10 @@ class DeleteButton extends StatelessWidget {
                     topLeft: Radius.circular(35),
                     bottomRight: Radius.circular(35))),
             contentPadding: EdgeInsets.only(top: 2.h),
-            backgroundColor: kScaffold,
             title: Text(
               "Delete This Reminder?",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
             ),
             actions: [
               TextButton(
@@ -87,7 +75,7 @@ class DeleteButton extends StatelessWidget {
                   },
                   child: Text(
                     'Cancel',
-                    style: TextStyle(color: kCccolor, fontSize: 16.sp),
+                    style: TextStyle(fontSize: 16.sp),
                   )),
               TextButton(
                   onPressed: () {
@@ -95,7 +83,7 @@ class DeleteButton extends StatelessWidget {
                   },
                   child: Text(
                     'Ok',
-                    style: TextStyle(color: kPrimaryColor, fontSize: 16.sp),
+                    style: TextStyle(fontSize: 16.sp),
                   ))
             ],
           );

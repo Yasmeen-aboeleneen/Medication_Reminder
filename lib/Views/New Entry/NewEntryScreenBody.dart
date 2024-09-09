@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Core/Constants/Constants.dart';
-import 'package:medication_reminder/Core/Utils/Global_Bloc.dart';
-import 'package:medication_reminder/Core/Widgets/Buttons.dart';
+ import 'package:medication_reminder/Core/Widgets/Buttons.dart';
 import 'package:medication_reminder/Views/New%20Entry/NewEntry_Bloc.dart';
 import 'package:medication_reminder/Views/Widgets/IntervalSelection.dart';
 import 'package:medication_reminder/Views/Widgets/PanelTitle.dart';
@@ -10,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../Widgets/MedicineType.dart';
-import '../Widgets/Medicine_Type.dart';
+import '../../Core/Utils/Classes/medicine_type.dart';
 
 class NewEntryScreenBody extends StatefulWidget {
   const NewEntryScreenBody({super.key});
@@ -44,7 +42,7 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
+    // final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
     return Scaffold(
       key: _scaffoldKey,
       resizeToAvoidBottomInset: false,
@@ -55,14 +53,13 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
             child: Text(
           'Add New Medicine',
           style: TextStyle(
-              color: kColor, fontWeight: FontWeight.w500, fontSize: 20.sp),
+               fontWeight: FontWeight.w500, fontSize: 20.sp),
         )),
         iconTheme: IconThemeData(
-          color: kColor,
+         
           size: 23.sp,
         ),
-        backgroundColor: kScaffold,
-      ),
+       ),
       body: Provider<NewEntryBloc>.value(
         value: _newEntryBloc,
         child: Padding(
@@ -84,21 +81,21 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                   maxLength: 30,
                   decoration: const InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kColor, width: 2.5)),
+                        borderSide: BorderSide(  width: 2.5)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kPrimaryColor, width: 2.5)),
+                        borderSide: BorderSide( width: 2.5)),
                     hintText: 'Enter Medicine Name',
                     hintStyle: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: kPrimaryColor,
+                 
                     ),
                   ),
                   style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.normal,
-                      color: kTextColor),
-                  cursorColor: kPrimaryColor,
+                     ),
+                
                 ),
                 SizedBox(
                   height: 1.h,
@@ -116,21 +113,21 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                   maxLength: 5,
                   decoration: const InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kColor, width: 2.5)),
+                        borderSide: BorderSide(  width: 2.5)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kPrimaryColor, width: 2.5)),
+                        borderSide: BorderSide(  width: 2.5)),
                     hintText: 'Enter dosage in mg',
                     hintStyle: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color:kPrimaryColor,
+                    
                     ),
                   ),
                   style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.normal,
-                      color: kTextColor),
-                  cursorColor: kPrimaryColor,
+                      ),
+                 
                 ),
                 SizedBox(
                   height: 1.h,

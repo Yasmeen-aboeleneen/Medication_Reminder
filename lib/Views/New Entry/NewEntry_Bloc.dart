@@ -1,4 +1,4 @@
-import 'package:medication_reminder/Views/Widgets/Medicine_Type.dart';
+import 'package:medication_reminder/Core/Utils/Classes/medicine_type.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../Common/Errors.dart';
@@ -45,8 +45,8 @@ class NewEntryBloc {
   }
 
   void updateSelectedMedicine(MedicineType type) {
-    MedicineType _tempType = _selectedMedicineType$!.value;
-    if (type == _tempType) {
+    MedicineType tempType = _selectedMedicineType$!.value;
+    if (type == tempType) {
       _selectedMedicineType$!.add(MedicineType.none);
     } else {
       _selectedMedicineType$!.add(type);

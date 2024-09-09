@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Core/Constants/Constants.dart';
-
+ 
 class ExtendedInfoTable extends StatelessWidget {
   const ExtendedInfoTable(
       {super.key, required this.fieldTitle, required this.fieldinfo});
@@ -20,8 +19,7 @@ class ExtendedInfoTable extends StatelessWidget {
             child: Text(
               fieldTitle,
               style: TextStyle(
-                  color: kTextColor,
-                  fontSize: 14.sp,
+                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 1),
             ),
@@ -29,7 +27,7 @@ class ExtendedInfoTable extends StatelessWidget {
           Text(
             fieldinfo,
             style: TextStyle(
-                color: kPrimaryColor,
+                
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 1),

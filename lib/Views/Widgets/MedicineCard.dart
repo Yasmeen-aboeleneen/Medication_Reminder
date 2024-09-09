@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Core/Constants/Constants.dart';
-
+ 
 class MedicineCard extends StatelessWidget {
   const MedicineCard({super.key});
 
@@ -13,7 +12,7 @@ class MedicineCard extends StatelessWidget {
       width: 20.w,
       height: 20.h,
       decoration: BoxDecoration(
-          color: kSecondaryColor, borderRadius: BorderRadius.circular(2.h)),
+         borderRadius: BorderRadius.circular(2.h)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -31,7 +30,7 @@ class MedicineCard extends StatelessWidget {
             textAlign: TextAlign.start,
             'Panadol',
             style: TextStyle(
-                color: Kblue,
+              
                 fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1),
@@ -44,7 +43,7 @@ class MedicineCard extends StatelessWidget {
             textAlign: TextAlign.start,
             'Every 8 hours',
             style: TextStyle(
-                color: kColor,
+               
                 fontSize: 11.sp,
                 fontWeight: FontWeight.w700,
                 letterSpacing: 1),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Views/Widgets/Medicine_Type.dart';
+import 'package:medication_reminder/Core/Constants/colors.dart';
+import 'package:medication_reminder/Core/Utils/Classes/medicine_type.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import 'package:medication_reminder/Core/Constants/Constants.dart';
 import 'package:medication_reminder/Views/New%20Entry/NewEntry_Bloc.dart';
 
 class MedicineTypee extends StatelessWidget {
@@ -31,7 +31,7 @@ class MedicineTypee extends StatelessWidget {
         width: 20.w,
         height: 12.h,
         decoration: BoxDecoration(
-            color: isSelected ? kCccolor : Colors.white,
+            color: isSelected ? kPrimary : Colors.white,
             borderRadius: BorderRadius.circular(3.h)),
         child: Column(
           children: [
@@ -47,10 +47,7 @@ class MedicineTypee extends StatelessWidget {
             Center(
               child: Text(
                 name,
-                style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
               ),
             )
           ],

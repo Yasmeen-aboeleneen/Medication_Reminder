@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:sizer/sizer.dart';
-
-import '../../Core/Constants/Constants.dart';
 
 class TopCounter extends StatelessWidget {
   const TopCounter({super.key});
@@ -21,7 +20,7 @@ class TopCounter extends StatelessWidget {
               style: TextStyle(
                   fontSize: w * .07,
                   fontWeight: FontWeight.w500,
-                  color: kColor),
+                  color: kBlack),
             ),
           ),
         ),
@@ -32,7 +31,7 @@ class TopCounter extends StatelessWidget {
           child: Text(
             '0',
             style: TextStyle(
-                fontSize: w * .1, fontWeight: FontWeight.bold, color: kColor),
+                fontSize: w * .1, fontWeight: FontWeight.bold, color: kBlack),
           ),
         )
       ],

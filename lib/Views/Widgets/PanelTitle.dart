@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Core/Constants/Constants.dart';
-
+ 
 class PanelTitle extends StatelessWidget {
   const PanelTitle({super.key, required this.title, required this.isRequired});
   final String title;
@@ -14,11 +13,11 @@ class PanelTitle extends StatelessWidget {
       TextSpan(
           text: title,
           style: TextStyle(
-              fontSize: 14.sp, color: kPrimaryColor, fontWeight: FontWeight.w400)),
+              fontSize: 14.sp,   fontWeight: FontWeight.w400)),
       TextSpan(
           text: isRequired ? '*' : '',
           style: TextStyle(
-              fontSize: 10.sp, color: kPrimaryColor, fontWeight: FontWeight.w400))
+              fontSize: 10.sp,  fontWeight: FontWeight.w400))
     ]));
   }
 }

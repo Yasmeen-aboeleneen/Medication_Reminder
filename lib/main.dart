@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Core/Constants/Constants.dart';
-import 'package:medication_reminder/Core/Utils/Global_Bloc.dart';
+ import 'package:medication_reminder/Core/Utils/Global_Bloc.dart';
 import 'package:medication_reminder/Views/Splash/SplashScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -32,13 +31,10 @@ class _MyAppState extends State<MyApp> {
       child: Sizer(
         builder: (BuildContext context, Orientation orientation,
             DeviceType deviceType) {
-          return MaterialApp(
+          return const MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Medication Reminder',
-            theme: ThemeData.dark().copyWith(
-              scaffoldBackgroundColor: kScaffold,
-            ),
-            home: const SplashScreen(),
+            home: SplashScreen(),
           );
         },
       ),

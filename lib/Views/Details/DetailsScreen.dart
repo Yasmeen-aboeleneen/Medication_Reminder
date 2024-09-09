@@ -3,8 +3,7 @@ import 'package:medication_reminder/Core/Widgets/Buttons.dart';
 import 'package:medication_reminder/Views/Widgets/ExtendedSection.dart';
 import 'package:medication_reminder/Views/Widgets/MainSectionInfo.dart';
 import 'package:sizer/sizer.dart';
-import '../../Core/Constants/Constants.dart';
-
+ 
 class MedicineDetailsScreen extends StatefulWidget {
   const MedicineDetailsScreen({super.key});
 
@@ -25,15 +24,13 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen> {
             style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
-                color: kSecondaryColor),
+                ),
           ),
         ),
         iconTheme: IconThemeData(
-          color: kSecondaryColor,
-          size: 23.sp,
+           size: 23.sp,
         ),
-        backgroundColor: kPrimaryColor,
-      ),
+       ),
       body: Padding(
         padding: EdgeInsets.all(3.h),
         child: Column(
