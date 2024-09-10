@@ -48,7 +48,7 @@ class CustomAppBar extends StatelessWidget {
                     ),
                     CustomButton(
                       text: 'Add',
-                      colors: const [kveryWhite],
+                      colors: const [kveryWhite,kveryWhite],
                       onTap: () {
                         Get.to(() => const NewEntryScreen());
                       },  

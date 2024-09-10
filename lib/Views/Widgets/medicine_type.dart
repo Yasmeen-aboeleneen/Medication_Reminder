@@ -31,7 +31,9 @@ class MedicineTypee extends StatelessWidget {
         width: 20.w,
         height: 12.h,
         decoration: BoxDecoration(
-            color: isSelected ? kPrimary : Colors.white,
+             gradient: isSelected
+                ? const LinearGradient(colors: [kPrimary, kLightPurple])
+                : const LinearGradient(colors: [kveryWhite, kveryWhite]),
             borderRadius: BorderRadius.circular(3.h)),
         child: Column(
           children: [
