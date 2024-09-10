@@ -1,6 +1,13 @@
+// ignore_for_file: unused_local_variable
+
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
+import 'package:medication_reminder/Core/Utils/Classes/global_bloc.dart';
 import 'package:medication_reminder/Core/Widgets/custom_button.dart';
+import 'package:medication_reminder/Models/errors.dart';
+import 'package:medication_reminder/Models/medicine.dart';
 import 'package:medication_reminder/Views/New%20Entry/new_entry_bloc.dart';
 import 'package:medication_reminder/Views/Widgets/interval_selection.dart';
 import 'package:medication_reminder/Views/Widgets/panel_title.dart';
@@ -96,17 +103,80 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                 const SelectTime(),
                 SizedBox(height: 1.5.h),
                 Center(
-                  child: CustomButton(
-                    text: 'Confirm',
-                    onTap: () {},
-                    colors: const [kLightPurple, kPrimary, kPrimary],
-                  ),
-                )
+                    child: CustomButton(
+                  text: 'Confirm',
+                  onTap: () {
+                    String? medicineName;
+                    int? dosage;
+
+                    if (nameController.text.isEmpty) {
+                      _newEntryBloc.submitError(EntryError.nameNull);
+                      return;
+                    } else {
+                      medicineName = nameController.text;
+                    }
+
+                    if (dosageController.text.isEmpty) {
+                      dosage = 0;
+                    } else {
+                      dosage = int.parse(dosageController.text);
+                    }
+
+                    for (var medicine in GlobalBloc().medicineList$!.value) {
+                      if (medicineName == medicine.medicineName) {
+                        _newEntryBloc.submitError(EntryError.nameDuplicate);
+                        return;
+                      }
+                      if (_newEntryBloc.selectedIntervals!.value == 0) {
+                        _newEntryBloc.submitError(EntryError.interval);
+                        return;
+                      }
+                      if (_newEntryBloc.selectedTimeOfDay!.value == 'None') {
+                        _newEntryBloc.submitError(EntryError.startTime);
+                        return;
+                      }
+
+                      String medicineType = _newEntryBloc
+                          .selectedMedicineType!.value
+                          .toString()
+                          .substring(13);
+
+                      int interval = _newEntryBloc.selectedIntervals!.value;
+                      String startTime = _newEntryBloc.selectedTimeOfDay!.value;
+
+                      List<int> intIDs =
+                          makeIDs(24 / _newEntryBloc.selectedIntervals!.value);
+
+                      List<String> notificationIDs =
+                          intIDs.map((i) => i.toString()).toList();
+
+                      Medicine newEntryMedicine = Medicine(
+                          notificationIDs: notificationIDs,
+                          medicineName: medicineName,
+                          dosage: dosage,
+                          medicineType: medicineType,
+                          interval: interval,
+                          startTime: startTime);
+
+                      GlobalBloc().updateMedicineList(newEntryMedicine);
+                    }
+                  },
+                  colors: const [kLightPurple, kPrimary, kPrimary],
+                ))
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  List<int> makeIDs(double n) {
+    var rng = Random();
+    List<int> ids = [];
+    for (int i = 0; i > n; i++) {
+      ids.add(rng.nextInt(1000000000));
+    }
+    return ids;
   }
 }

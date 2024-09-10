@@ -1,8 +1,8 @@
 import 'dart:convert';
 
+import 'package:medication_reminder/Models/medicine.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../Common/medicine.dart';
 
 class GlobalBloc {
   BehaviorSubject<List<Medicine>>? _medicineList$;
@@ -11,6 +11,24 @@ class GlobalBloc {
   GlobalBloc() {
     _medicineList$ = BehaviorSubject<List<Medicine>>.seeded([]);
     makeMedicineList();
+  }
+
+  Future updateMedicineList(Medicine newMedicine) async {
+    var blocList = _medicineList$!.value;
+    blocList.add(newMedicine);
+    _medicineList$!.add(blocList);
+
+    Map<String, dynamic> tempMap = newMedicine.toJson();
+    SharedPreferences? sharedUser = await SharedPreferences.getInstance();
+    String newMedicineJson = jsonEncode(tempMap);
+    List<String> medicineJsonList = [];
+    if (sharedUser.getStringList('medicines') == null) {
+      medicineJsonList.add(newMedicineJson);
+    } else {
+      medicineJsonList = sharedUser.getStringList('medicines')!;
+      medicineJsonList.add(newMedicineJson);
+    }
+    sharedUser.setStringList('medicines', medicineJsonList);
   }
 
   Future makeMedicineList() async {
@@ -26,7 +44,6 @@ class GlobalBloc {
         Medicine tempMedicine = Medicine.fromJson(userMap);
         prefList.add(tempMedicine);
       }
-      //State Update
       _medicineList$!.add(prefList);
     }
   }

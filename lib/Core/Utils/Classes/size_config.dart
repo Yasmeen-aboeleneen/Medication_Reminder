@@ -1,10 +1,15 @@
+// ignore_for_file: avoid_print
+
 import 'dart:core';
 
 import 'package:flutter/material.dart';
 
 class SizeConfig {
+  // ignore: non_constant_identifier_names
   static double? ScreenWidth;
+  // ignore: non_constant_identifier_names
   static double? ScreenHeight;
+  // ignore: non_constant_identifier_names
   static double? DefaultSize;
   static Orientation? orientation;
 

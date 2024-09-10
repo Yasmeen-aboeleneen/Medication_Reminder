@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medication_reminder/Common/convert_time.dart';
+import 'package:medication_reminder/Models/convert_time.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:sizer/sizer.dart';
 
