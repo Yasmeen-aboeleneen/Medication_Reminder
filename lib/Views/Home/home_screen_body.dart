@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
+import 'package:medication_reminder/Views/Widgets/bottom_container.dart';
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({super.key});
@@ -44,38 +44,45 @@ class _HomeScreenBodyState extends State<HomeScreenBody>
       width: w,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+        ),
         color: kveryWhite,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: h * .02),
-            child: Text(
-              '0',
-              style: GoogleFonts.aBeeZee(
-                fontSize: w * .18,
-                fontWeight: FontWeight.bold,
-                color: kBlack,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Padding(
+            //   padding: EdgeInsets.only(top: h * .02),
+            //   child: Text(
+            //     '0',
+            //     style: GoogleFonts.aBeeZee(
+            //       fontSize: w * .18,
+            //       fontWeight: FontWeight.bold,
+            //       color: kBlack,
+            //     ),
+            //   ),
+            // ),
+            // Uncomment if you want to show this text when there are no medicines
+            /*
+            AnimatedOpacity(
+              opacity: opacity,
+              duration: const Duration(seconds: 2),
+              child: Text(
+                'No Medicine yet',
+                style: GoogleFonts.aBeeZee(
+                  fontSize: w * .08,
+                  fontWeight: FontWeight.bold,
+                  color: kBlack,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: h * .17),
-          AnimatedOpacity(
-            opacity: opacity,
-            duration: const Duration(seconds: 2),
-            child: Text(
-              'No Medicine yet',
-              style: GoogleFonts.aBeeZee(
-                fontSize: w * .08,
-                fontWeight: FontWeight.bold,
-                color: kBlack,
-              ),
-            ),
-          ),
-          SizedBox(height: h * .06),
-        ],
+            */
+            const BottomContainer(),
+            SizedBox(height: h * .06),
+          ],
+        ),
       ),
     );
   }

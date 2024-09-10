@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:sizer/sizer.dart';
 
- 
 class ExtendedInfoTable extends StatelessWidget {
   const ExtendedInfoTable(
       {super.key, required this.fieldTitle, required this.fieldinfo});
@@ -19,17 +19,17 @@ class ExtendedInfoTable extends StatelessWidget {
             child: Text(
               fieldTitle,
               style: TextStyle(
-                   fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w700,
                   letterSpacing: 1),
             ),
           ),
           Text(
             fieldinfo,
             style: TextStyle(
-                
+                color: kRed,
                 fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w600,
                 letterSpacing: 1),
           ),
         ],

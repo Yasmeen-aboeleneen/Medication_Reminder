@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'ExtendedInfoTable.dart';
+import 'extended_info_table.dart';
 
 class ExtendedSection extends StatelessWidget {
   const ExtendedSection({super.key});
