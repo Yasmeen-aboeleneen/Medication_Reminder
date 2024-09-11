@@ -8,12 +8,12 @@ import 'package:medication_reminder/Views/New%20Entry/new_entry_bloc.dart';
 
 class MedicineTypee extends StatelessWidget {
   const MedicineTypee({
-    Key? key,
+    super.key,
     required this.name,
     required this.image,
     required this.isSelected,
     required this.medicineType,
-  }) : super(key: key);
+  });
 
   final String name;
   final String image;

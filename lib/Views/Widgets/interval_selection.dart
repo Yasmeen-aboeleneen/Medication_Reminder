@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
+import 'package:medication_reminder/Views/New%20Entry/new_entry_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class IntervalSelection extends StatefulWidget {
@@ -15,6 +17,8 @@ class _IntervalSelectionState extends State<IntervalSelection> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    final NewEntryBloc newEntryBloc = Provider.of<NewEntryBloc>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -52,6 +56,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
             onChanged: (newVal) {
               setState(() {
                 _selected = newVal!;
+                newEntryBloc.updateInterval(newVal);
               });
             }),
         Text(
