@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:medication_reminder/Views/Home/home_screen.dart';
- 
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -70,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(height: h * 0.05),
             AnimatedOpacity(
               opacity: _textOpacity,
-              duration: const Duration(seconds: 2), 
+              duration: const Duration(seconds: 2),
               child: Text(
                 'We take care of\n your regular medication',
                 textAlign: TextAlign.center,

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:medication_reminder/Views/Home/home_screen.dart';
@@ -16,8 +15,9 @@ class _SuccessScreenState extends State<SuccessScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       Navigator.pushAndRemoveUntil(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => const HomeScreen()),
         (route) => false,

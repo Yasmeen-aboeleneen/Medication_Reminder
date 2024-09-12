@@ -7,7 +7,7 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.textEditingController,
-    required this.maxLen,
+    required this.maxLen, required TextInputType keyboardType,
   });
   final String hintText;
   final TextEditingController textEditingController;

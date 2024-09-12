@@ -1,9 +1,8 @@
 import 'dart:convert';
-
-import 'package:medication_reminder/Models/medicine.dart';
+ import 'package:medication_reminder/Models/medicine.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+ 
 class GlobalBloc {
   BehaviorSubject<List<Medicine>>? _medicineList$;
   BehaviorSubject<List<Medicine>>? get medicineList$ => _medicineList$;
@@ -11,6 +10,33 @@ class GlobalBloc {
   GlobalBloc() {
     _medicineList$ = BehaviorSubject<List<Medicine>>.seeded([]);
     makeMedicineList();
+  }
+
+  Future removeMedicine(Medicine tobeRemoved) async {
+    // FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    //     FlutterLocalNotificationsPlugin();
+    SharedPreferences sharedUser = await SharedPreferences.getInstance();
+    List<String> medicineJsonList = [];
+
+    var blockList = _medicineList$!.value;
+    blockList.removeWhere(
+        (medicine) => medicine.medicineName == tobeRemoved.medicineName);
+
+    //remove notifications,todo
+    for (int i = 0; i < (24 / tobeRemoved.interval!).floor(); i++) {
+      // flutterLocalNotificationsPlugin
+      //     .cancel(int.parse(tobeRemoved.notificationIDs![i]));
+    }
+
+    if (blockList.isNotEmpty) {
+      for (var blockMedicine in blockList) {
+        String medicineJson = jsonEncode(blockMedicine.toJson());
+        medicineJsonList.add(medicineJson);
+      }
+    }
+
+    sharedUser.setStringList('medicines', medicineJsonList);
+    _medicineList$!.add(blockList);
   }
 
   Future updateMedicineList(Medicine newMedicine) async {
@@ -44,6 +70,7 @@ class GlobalBloc {
         Medicine tempMedicine = Medicine.fromJson(userMap);
         prefList.add(tempMedicine);
       }
+      //state update
       _medicineList$!.add(prefList);
     }
   }
@@ -52,3 +79,4 @@ class GlobalBloc {
     _medicineList$!.close();
   }
 }
+

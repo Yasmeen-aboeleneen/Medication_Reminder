@@ -27,10 +27,11 @@ class NewEntryBloc {
   }
 
   void dispose() {
-    _selectedMedicineType$!.close();
-    _selectedTimeOfDay$!.close();
-    _selectedIntervals$!.close();
-  }
+  _selectedMedicineType$!.close();
+  _selectedTimeOfDay$!.close();
+  _selectedIntervals$!.close();
+  _errorState$!.close(); 
+}
 
   void submitError(EntryError error) {
     _errorState$!.add(error);
@@ -45,11 +46,15 @@ class NewEntryBloc {
   }
 
   void updateSelectedMedicine(MedicineType type) {
-    MedicineType tempType = _selectedMedicineType$!.value;
-    if (type == tempType) {
+    MedicineType currentType = _selectedMedicineType$!.value;
+    print("Current Medicine Type: $currentType");
+    print("New Medicine Type: $type");
+    if (currentType == type) {
       _selectedMedicineType$!.add(MedicineType.none);
+      print("Medicine Type set to: none");
     } else {
       _selectedMedicineType$!.add(type);
+      print("Medicine Type set to: $type");
     }
   }
 }

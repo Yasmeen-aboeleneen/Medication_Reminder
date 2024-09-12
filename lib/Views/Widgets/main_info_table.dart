@@ -12,7 +12,7 @@ class MainInfoTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 40.w,
-      height: 10.h,
+      height: 15.h,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

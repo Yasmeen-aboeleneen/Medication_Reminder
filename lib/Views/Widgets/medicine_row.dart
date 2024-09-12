@@ -18,78 +18,82 @@ class _MedicineRowState extends State<MedicineRow> {
   @override
   void initState() {
     super.initState();
-    _newEntryBloc = NewEntryBloc();
-  }
-
-  @override
-  void dispose() {
-    _newEntryBloc.dispose();
-    super.dispose();
+    // You can remove the creation of a new bloc here, and instead access it from the Provider in the parent widget
   }
 
   @override
   Widget build(BuildContext context) {
-    return Provider<NewEntryBloc>.value(
-      value: _newEntryBloc,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 2),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: StreamBuilder<MedicineType>(
-              stream: _newEntryBloc.selectedMedicineType,
-              builder: (context, snapshot) {
-                return Row(
-                  children: [
-                    MedicineTypee(
-                      name: 'Pills',
-                      image: "Assets/Icons/pills.png",
-                      isSelected:
-                          snapshot.data == MedicineType.pills ? true : false,
-                      medicineType: MedicineType.pills,
-                    ),
-                    SizedBox(width: 3.w),
-                    MedicineTypee(
-                      name: 'Syrup',
-                      image: "Assets/Icons/syrup.png",
-                      isSelected:
-                          snapshot.data == MedicineType.syrup ? true : false,
-                      medicineType: MedicineType.syrup,
-                    ),
-                    SizedBox(width: 3.w),
-                    MedicineTypee(
-                      name: 'Syringe',
-                      image: "Assets/Icons/syringe.png",
-                      isSelected:
-                          snapshot.data == MedicineType.syringe ? true : false,
-                      medicineType: MedicineType.syringe,
-                    ),
-                    SizedBox(width: 3.w),
-                    MedicineTypee(
-                      name: 'Nasal',
-                      image: "Assets/Icons/nasal-spray (1).png",
-                      isSelected:
-                          snapshot.data == MedicineType.nasal ? true : false,
-                      medicineType: MedicineType.nasal,
-                    ),
-                    SizedBox(width: 3.w),
-                    MedicineTypee(
-                      name: 'Eye Drops',
-                      image: "Assets/Icons/eye-drops.png",
-                      isSelected:
-                          snapshot.data == MedicineType.eyeDrops ? true : false,
-                      medicineType: MedicineType.eyeDrops,
-                    ),
-                    SizedBox(width: 3.w),
-                    MedicineTypee(
-                      name: 'Ear Drops',
-                      image: "Assets/Icons/ear-drops.png",
-                      isSelected:
-                          snapshot.data == MedicineType.earDrops ? true : false,
-                      medicineType: MedicineType.earDrops,
-                    ),
-                  ],
-                );
-              }),
+    // Accessing the NewEntryBloc from the Provider passed by the parent widget
+    _newEntryBloc = Provider.of<NewEntryBloc>(context, listen: false);
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 2),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: StreamBuilder<MedicineType>(
+          stream: _newEntryBloc.selectedMedicineType,
+          builder: (context, snapshot) {
+            // Check if data is present in the stream
+            final medicineType = snapshot.data ?? MedicineType.none;
+
+            return Row(
+              children: [
+                MedicineTypee(
+                  name: 'pills',
+                  image: "Assets/Icons/pills.png",
+                  isSelected: medicineType == MedicineType.pills,
+                  medicineType: MedicineType.pills,
+                  onTap: () =>
+                      _newEntryBloc.updateSelectedMedicine(MedicineType.pills),
+                ),
+                SizedBox(width: 3.w),
+                MedicineTypee(
+                  name: 'syrup',
+                  image: "Assets/Icons/syrup.png",
+                  isSelected: medicineType == MedicineType.syrup,
+                  medicineType: MedicineType.syrup,
+                  onTap: () =>
+                      _newEntryBloc.updateSelectedMedicine(MedicineType.syrup),
+                ),
+                SizedBox(width: 3.w),
+                MedicineTypee(
+                  name: 'syringe',
+                  image: "Assets/Icons/syringe.png",
+                  isSelected: medicineType == MedicineType.syringe,
+                  medicineType: MedicineType.syringe,
+                  onTap: () => _newEntryBloc
+                      .updateSelectedMedicine(MedicineType.syringe),
+                ),
+                SizedBox(width: 3.w),
+                MedicineTypee(
+                  name: 'nasal',
+                  image: "Assets/Icons/nasal-spray (1).png",
+                  isSelected: medicineType == MedicineType.nasal,
+                  medicineType: MedicineType.nasal,
+                  onTap: () =>
+                      _newEntryBloc.updateSelectedMedicine(MedicineType.nasal),
+                ),
+                SizedBox(width: 3.w),
+                MedicineTypee(
+                  name: 'eyeDrops',
+                  image: "Assets/Icons/eye-drops.png",
+                  isSelected: medicineType == MedicineType.eyeDrops,
+                  medicineType: MedicineType.eyeDrops,
+                  onTap: () => _newEntryBloc
+                      .updateSelectedMedicine(MedicineType.eyeDrops),
+                ),
+                SizedBox(width: 3.w),
+                MedicineTypee(
+                  name: 'earDrops',
+                  image: "Assets/Icons/ear-drops.png",
+                  isSelected: medicineType == MedicineType.earDrops,
+                  medicineType: MedicineType.earDrops,
+                  onTap: () => _newEntryBloc
+                      .updateSelectedMedicine(MedicineType.earDrops),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

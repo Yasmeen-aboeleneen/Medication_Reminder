@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
-import 'package:medication_reminder/Core/Widgets/custom_button.dart';
-import 'package:medication_reminder/Views/New%20Entry/new_entry_screen.dart';
+import 'package:medication_reminder/Core/Utils/Classes/global_bloc.dart';
+import 'package:medication_reminder/Models/medicine.dart';
+import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -12,6 +12,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
+    final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
     return Container(
       height: h * .38,
       width: w,
@@ -19,52 +20,82 @@ class CustomAppBar extends StatelessWidget {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [kPrimary, kLightPurple])),
+              colors: [
+            kPrimary2,
+            kPrimary,
+            kLightPurple,
+          ])),
       child: Stack(
         children: [
           Positioned(
             top: h * .04,
-            child: Padding(
-              padding: EdgeInsets.only(top: h * .06, left: w * .03),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: h * .02,
+            left: w * .06,
+            right: w * .06,
+            child: Column(children: [
+              SizedBox(
+                height: h * .02,
+              ),
+              Center(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    'Medicine Reminder',
+                    style: GoogleFonts.aBeeZee(
+                        color: kveryWhite,
+                        fontSize: w * .075,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: h * .04,
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: h * .04),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Saved Medicines',
+                    style: GoogleFonts.aBeeZee(
+                      fontSize: w * .05,
+                      fontWeight: FontWeight.bold,
+                      color: kDGrey,
                     ),
-                    Align(
+                  ),
+                ),
+              ),
+              StreamBuilder<List<Medicine>>(
+                stream: globalBloc.medicineList$,
+                builder: (context, snapshot) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: w * .13),
+                    child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Create\nNew Schedule',
-                        style: GoogleFonts.aBeeZee(
-                            color: kBlack,
-                            fontSize: w * .056,
-                            fontWeight: FontWeight.bold),
+                        !snapshot.hasData
+                            ? '0'
+                            : snapshot.data!.length.toString(),
+                        style: GoogleFonts.abel(
+                          fontSize: w * .07,
+                          fontWeight: FontWeight.w700,
+                          color: kveryWhite,
+                        ),
                       ),
                     ),
-                    SizedBox(
-                      height: h * .02,
-                    ),
-                    CustomButton(
-                      text: 'Add',
-                      colors: const [kveryWhite, kveryWhite],
-                      onTap: () {
-                        Get.to(() => const NewEntryScreen());
-                      },
-                    ),
-                  ]),
-            ),
+                  );
+                },
+              ),
+            ]),
           ),
           Positioned(
             right: 0,
-            bottom: 0,
-            top: 0,
+            bottom: h * .03,
+            top: h * .09,
             child: Image.asset(
-              'Assets/Images/pic2.png',
+              'Assets/Images/pic1.png',
               fit: BoxFit.cover,
               width: w * .4,
-              height: h * .4,
+              height: h * .3,
             ),
           )
         ],

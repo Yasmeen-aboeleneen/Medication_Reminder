@@ -82,10 +82,11 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                   hintText: 'Enter Medicine Name',
                   textEditingController: nameController,
                   maxLen: 30,
+                  keyboardType: TextInputType.name,
                 ),
                 SizedBox(height: 1.h),
                 const PanelTitle(
-                  title: 'Dosage in mg ',
+                  title: 'Dosage in mg',
                   isRequired: false,
                 ),
                 SizedBox(height: 1.h),
@@ -93,6 +94,7 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                   hintText: 'Enter dosage in mg',
                   textEditingController: dosageController,
                   maxLen: 5,
+                  keyboardType: TextInputType.phone,
                 ),
                 SizedBox(height: 1.h),
                 const PanelTitle(title: 'Medicine Type', isRequired: false),
@@ -125,7 +127,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                       dosage = int.parse(dosageController.text);
                     }
 
-                    for (var medicine in GlobalBloc().medicineList$!.value) {
+                    final globalBloc =
+                        Provider.of<GlobalBloc>(context, listen: false);
+
+                    for (var medicine in globalBloc.medicineList$!.value) {
                       if (medicineName == medicine.medicineName) {
                         _newEntryBloc.submitError(EntryError.nameDuplicate);
                         return;
@@ -142,17 +147,17 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                       return;
                     }
 
-                    // Proceed with adding the medicine and navigation
                     String medicineType = _newEntryBloc
                         .selectedMedicineType!.value
                         .toString()
-                        .substring(13);
+                        .split('.')
+                        .last;
 
                     int interval = _newEntryBloc.selectedIntervals!.value;
                     String startTime = _newEntryBloc.selectedTimeOfDay!.value;
 
                     List<int> intIDs =
-                        makeIDs(24 / _newEntryBloc.selectedIntervals!.value);
+                        makeIDs(24 ~/ _newEntryBloc.selectedIntervals!.value);
                     List<String> notificationIDs =
                         intIDs.map((i) => i.toString()).toList();
 
@@ -165,14 +170,15 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                       startTime: startTime,
                     );
 
-                    GlobalBloc().updateMedicineList(newEntryMedicine);
+                    globalBloc.updateMedicineList(newEntryMedicine);
 
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SuccessScreen(),
-                      ),
-                    );
+                          builder: (context) => const SuccessScreen()),
+                    ).then((value) {
+                      setState(() {});
+                    });
                   },
                   colors: const [kLightPurple, kPrimary, kPrimary],
                 ))
@@ -224,11 +230,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
     ));
   }
 
-  List<int> makeIDs(double n) {
+  List<int> makeIDs(int n) {
     var rng = Random();
     List<int> ids = [];
     for (int i = 0; i < n; i++) {
-      // Changed 'i > n' to 'i < n'
       ids.add(rng.nextInt(1000000000));
     }
     return ids;

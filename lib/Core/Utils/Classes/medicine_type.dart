@@ -1,1 +1,1 @@
-enum MedicineType { nasal, pills, syringe, eyeDrops, earDrops, syrup, none }
+enum MedicineType { pills, syrup, syringe, nasal, eyeDrops, earDrops, none }

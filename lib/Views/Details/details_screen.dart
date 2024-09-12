@@ -1,13 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:medication_reminder/Core/Constants/colors.dart';
-import 'package:medication_reminder/Core/Widgets/delete_button_w_alert.dart';
-import 'package:medication_reminder/Views/Widgets/extended_section.dart';
-import 'package:medication_reminder/Views/Widgets/main_section_info.dart';
 import 'package:sizer/sizer.dart';
 
-class MedicineDetailsScreen extends StatefulWidget {
-  const MedicineDetailsScreen({super.key});
+import 'package:medication_reminder/Core/Constants/colors.dart';
+import 'package:medication_reminder/Core/Widgets/delete_button_w_alert.dart';
+import 'package:medication_reminder/Models/medicine.dart';
+import 'package:medication_reminder/Views/Widgets/extended_section.dart';
+import 'package:medication_reminder/Views/Widgets/main_section_info.dart';
 
+class MedicineDetailsScreen extends StatefulWidget {
+   const MedicineDetailsScreen(this.medicine, {super.key});
+  final Medicine medicine;
   @override
   State<MedicineDetailsScreen> createState() => _MedicineDetailsScreenState();
 }
@@ -43,13 +46,17 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen> {
             SizedBox(
               height: 2.h,
             ),
-            const MainSectionInfo(),
+            MainSectionInfo(medicine: widget.medicine),
             SizedBox(
               height: 4.h,
             ),
-            const ExtendedSection(),
+            ExtendedSection(
+              medicine: widget.medicine,
+            ),
             const Spacer(),
-            const DeleteButton()
+            DeleteButton(
+              medicine: widget.medicine,
+            )
           ],
         ),
       ),

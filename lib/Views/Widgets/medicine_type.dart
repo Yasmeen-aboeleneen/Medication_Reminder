@@ -12,7 +12,7 @@ class MedicineTypee extends StatelessWidget {
     required this.name,
     required this.image,
     required this.isSelected,
-    required this.medicineType,
+    required this.medicineType, required void Function() onTap,
   });
 
   final String name;
@@ -31,7 +31,7 @@ class MedicineTypee extends StatelessWidget {
         width: 20.w,
         height: 12.h,
         decoration: BoxDecoration(
-             gradient: isSelected
+            gradient: isSelected
                 ? const LinearGradient(colors: [kPrimary, kLightPurple])
                 : const LinearGradient(colors: [kveryWhite, kveryWhite]),
             borderRadius: BorderRadius.circular(3.h)),
