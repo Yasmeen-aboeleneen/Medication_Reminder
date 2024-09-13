@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medication_reminder/Models/convert_time.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
+import 'package:medication_reminder/Views/New%20Entry/new_entry_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class SelectTime extends StatefulWidget {
@@ -16,6 +18,8 @@ class _SelectTimeState extends State<SelectTime> {
   bool _clicked = false;
 
   Future<TimeOfDay> _selectTime() async {
+    final NewEntryBloc newEntryBloc =
+        Provider.of<NewEntryBloc>(context, listen: false);
     final TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: _time,
@@ -43,6 +47,8 @@ class _SelectTimeState extends State<SelectTime> {
       setState(() {
         _time = picked;
         _clicked = true;
+        newEntryBloc.updateTime(convertTime(_time.hour.toString()) +
+            convertTime(_time.minute.toString()));
       });
     }
     return picked!;
