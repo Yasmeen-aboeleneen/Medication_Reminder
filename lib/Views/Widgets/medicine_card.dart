@@ -12,7 +12,7 @@ class MedicineCard extends StatelessWidget {
 
   final Medicine medicine;
   Hero makeIcon(double size) {
-    print('Medicine Type: ${medicine.medicineType}'); 
+    // print('Medicine Type: ${medicine.medicineType}'); 
     if (medicine.medicineType == 'pills') {
       return Hero(
         tag: medicine.medicineName! + medicine.medicineType!,

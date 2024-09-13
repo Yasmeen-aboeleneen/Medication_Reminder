@@ -94,7 +94,7 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                   hintText: 'Enter dosage in mg',
                   textEditingController: dosageController,
                   maxLen: 5,
-                  keyboardType: TextInputType.phone,
+                  keyboardType: TextInputType.number,
                 ),
                 SizedBox(height: 1.h),
                 const PanelTitle(title: 'Medicine Type', isRequired: false),
