@@ -1,21 +1,22 @@
 class Medicine {
-  final List<dynamic>? notificationIDs;
+  final List<int>? notificationIDs; // Change from List<dynamic> to List<int>
   final String? medicineName;
   final int? dosage;
   final String? medicineType;
   final int? interval;
   final String? startTime;
 
-  Medicine(
-      {required this.notificationIDs,
-      required this.medicineName,
-      required this.dosage,
-      required this.medicineType,
-      required this.interval,
-      required this.startTime});
+  Medicine({
+    required this.notificationIDs,
+    required this.medicineName,
+    required this.dosage,
+    required this.medicineType,
+    required this.interval,
+    required this.startTime,
+  });
 
-  //getters
-  List<dynamic> get getIDs => notificationIDs!;
+  // Getters
+  List<int> get getIDs => notificationIDs!;
   String get getName => medicineName!;
   int get getDosage => dosage!;
   String get getType => medicineType!;
@@ -35,11 +36,12 @@ class Medicine {
 
   factory Medicine.fromJson(Map<String, dynamic> parsedJson) {
     return Medicine(
-        notificationIDs: parsedJson['ids'],
-        medicineName: parsedJson['name'],
-        dosage: parsedJson['dosage'],
-        medicineType: parsedJson['type'],
-        interval: parsedJson['interval'],
-        startTime: parsedJson['time']);
+      notificationIDs: List<int>.from(parsedJson['ids'] ?? []),
+      medicineName: parsedJson['name'],
+      dosage: parsedJson['dosage'],
+      medicineType: parsedJson['type'],
+      interval: parsedJson['interval'],
+      startTime: parsedJson['time'],
+    );
   }
 }

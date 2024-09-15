@@ -1,10 +1,8 @@
-// ignore_for_file: unused_local_variable
-
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:medication_reminder/Core/Utils/Classes/global_bloc.dart';
+import 'package:medication_reminder/Core/Utils/Classes/notifications_service.dart';
 import 'package:medication_reminder/Core/Widgets/custom_button.dart';
 import 'package:medication_reminder/Models/errors.dart';
 import 'package:medication_reminder/Models/medicine.dart';
@@ -38,6 +36,8 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
     dosageController = TextEditingController();
     _newEntryBloc = NewEntryBloc();
     _scaffoldKey = GlobalKey<ScaffoldState>();
+
+    NotificationsService.init(); // Initialize notifications service
     initializeErrorListen();
   }
 
@@ -130,7 +130,7 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                     final globalBloc =
                         Provider.of<GlobalBloc>(context, listen: false);
 
-                    for (var medicine in globalBloc.medicineList$!.value) {
+                    for (var medicine in globalBloc.medicineList$.value) {
                       if (medicineName == medicine.medicineName) {
                         _newEntryBloc.submitError(EntryError.nameDuplicate);
                         return;
@@ -158,8 +158,8 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
 
                     List<int> intIDs =
                         makeIDs(24 ~/ _newEntryBloc.selectedIntervals!.value);
-                    List<String> notificationIDs =
-                        intIDs.map((i) => i.toString()).toList();
+                    List<int> notificationIDs =
+                        intIDs; // Ensure notificationIDs is List<int>
 
                     Medicine newEntryMedicine = Medicine(
                       notificationIDs: notificationIDs,
@@ -171,6 +171,7 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                     );
 
                     globalBloc.updateMedicineList(newEntryMedicine);
+                    NotificationsService.scheduleNotification(newEntryMedicine);
 
                     Navigator.push(
                       context,
@@ -181,7 +182,7 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                     });
                   },
                   colors: const [kLightPurple, kPrimary, kPrimary],
-                ))
+                )),
               ],
             ),
           ),
@@ -191,7 +192,7 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
   }
 
   void initializeErrorListen() {
-    _newEntryBloc.errorState!.listen((EntryError error) {
+    _newEntryBloc.errorState?.listen((EntryError error) {
       switch (error) {
         case EntryError.nameNull:
           displayError("Please enter medicine's name");
@@ -199,7 +200,6 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
         case EntryError.nameDuplicate:
           displayError("Medicine name already exists");
           break;
-
         case EntryError.dosage:
           displayError("Please enter medicine's dosage");
           break;
@@ -232,10 +232,10 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
 
   List<int> makeIDs(int n) {
     var rng = Random();
-    List<int> ids = [];
-    for (int i = 0; i < n; i++) {
+    Set<int> ids = Set<int>();
+    while (ids.length < n) {
       ids.add(rng.nextInt(1000000000));
     }
-    return ids;
+    return ids.toList();
   }
 }

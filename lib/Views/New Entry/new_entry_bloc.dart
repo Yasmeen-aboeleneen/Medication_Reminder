@@ -47,14 +47,10 @@ class NewEntryBloc {
 
   void updateSelectedMedicine(MedicineType type) {
     MedicineType currentType = _selectedMedicineType$!.value;
-    print("Current Medicine Type: $currentType");
-    print("New Medicine Type: $type");
     if (currentType == type) {
       _selectedMedicineType$!.add(MedicineType.none);
-      print("Medicine Type set to: none");
     } else {
       _selectedMedicineType$!.add(type);
-      print("Medicine Type set to: $type");
     }
   }
 }
