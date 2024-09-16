@@ -1,18 +1,19 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:medication_reminder/Core/Utils/Classes/global_bloc.dart';
 import 'package:medication_reminder/Core/Utils/Classes/notifications_service.dart';
 import 'package:medication_reminder/Core/Widgets/custom_button.dart';
+import 'package:medication_reminder/Core/Widgets/custom_text_field.dart';
 import 'package:medication_reminder/Models/errors.dart';
 import 'package:medication_reminder/Models/medicine.dart';
 import 'package:medication_reminder/Views/New%20Entry/new_entry_bloc.dart';
 import 'package:medication_reminder/Views/New%20Entry/success_screen.dart';
 import 'package:medication_reminder/Views/Widgets/interval_selection.dart';
+import 'package:medication_reminder/Views/Widgets/medicine_row.dart';
 import 'package:medication_reminder/Views/Widgets/panel_title.dart';
 import 'package:medication_reminder/Views/Widgets/select_time.dart';
-import 'package:medication_reminder/Core/Widgets/custom_text_field.dart';
-import 'package:medication_reminder/Views/Widgets/medicine_row.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -156,10 +157,8 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
                     int interval = _newEntryBloc.selectedIntervals!.value;
                     String startTime = _newEntryBloc.selectedTimeOfDay!.value;
 
-                    List<int> intIDs =
-                        makeIDs(24 ~/ _newEntryBloc.selectedIntervals!.value);
                     List<int> notificationIDs =
-                        intIDs; // Ensure notificationIDs is List<int>
+                        makeIDs(24 ~/ _newEntryBloc.selectedIntervals!.value);
 
                     Medicine newEntryMedicine = Medicine(
                       notificationIDs: notificationIDs,
@@ -232,6 +231,7 @@ class _NewEntryScreenBodyState extends State<NewEntryScreenBody> {
 
   List<int> makeIDs(int n) {
     var rng = Random();
+    // ignore: prefer_collection_literals
     Set<int> ids = Set<int>();
     while (ids.length < n) {
       ids.add(rng.nextInt(1000000000));

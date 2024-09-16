@@ -12,7 +12,7 @@ class IntervalSelection extends StatefulWidget {
 }
 
 class _IntervalSelectionState extends State<IntervalSelection> {
-  final _intervals = [2, 4, 6, 8, 12, 24];
+  final _intervals = [0, 2, 4, 6, 8, 12, 24];
   var _selected = 0;
 
   @override

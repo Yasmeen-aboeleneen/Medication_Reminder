@@ -16,52 +16,61 @@ class GlobalBloc {
 
   BehaviorSubject<List<Medicine>> get medicineList$ => _medicineList$;
 
-  Future<void> removeMedicine(Medicine tobeRemoved) async {
+  /// Removes a [Medicine] from the list and cancels its notifications.
+  Future<void> removeMedicine(Medicine toBeRemoved) async {
     SharedPreferences sharedUser = await SharedPreferences.getInstance();
-    List<String> medicineJsonList = [];
 
-    var blockList = _medicineList$.value;
-    blockList.removeWhere((medicine) => medicine.medicineName == tobeRemoved.medicineName);
+    // Remove the medicine from the current list
+    var updatedList = List<Medicine>.from(_medicineList$.value);
+    updatedList.removeWhere(
+        (medicine) => medicine.medicineName == toBeRemoved.medicineName);
 
-    for (var id in tobeRemoved.notificationIDs!) {
-      await flutterLocalNotificationsPlugin.cancel(int.parse(id as String));
+    // Cancel all notifications for the medicine
+    for (var id in toBeRemoved.notificationIDs!) {
+      await flutterLocalNotificationsPlugin.cancel(id); // Correct: ID is int
     }
 
-    if (blockList.isNotEmpty) {
-      medicineJsonList = blockList.map((medicine) => jsonEncode(medicine.toJson())).toList();
-    }
+    // Update SharedPreferences
+    List<String> updatedJsonList =
+        updatedList.map((medicine) => jsonEncode(medicine.toJson())).toList();
+    await sharedUser.setStringList('medicines', updatedJsonList);
 
-    await sharedUser.setStringList('medicines', medicineJsonList);
-    _medicineList$.add(blockList);
+    // Update the BehaviorSubject with the new list
+    _medicineList$.add(updatedList);
   }
 
+  /// Adds a new [Medicine] to the list and updates shared preferences.
   Future<void> updateMedicineList(Medicine newMedicine) async {
-    var blocList = _medicineList$.value;
-    blocList.add(newMedicine);
-    _medicineList$.add(blocList);
+    // Add the new medicine to the current list
+    var updatedList = List<Medicine>.from(_medicineList$.value);
+    updatedList.add(newMedicine);
+    _medicineList$.add(updatedList); // Notify listeners
 
-    String newMedicineJson = jsonEncode(newMedicine.toJson());
+    // Save the new list to SharedPreferences
     SharedPreferences sharedUser = await SharedPreferences.getInstance();
-    List<String> medicineJsonList = sharedUser.getStringList('medicines') ?? [];
-    medicineJsonList.add(newMedicineJson);
-    await sharedUser.setStringList('medicines', medicineJsonList);
+    List<String> updatedJsonList =
+        updatedList.map((medicine) => jsonEncode(medicine.toJson())).toList();
+    await sharedUser.setStringList('medicines', updatedJsonList);
   }
 
+  /// Loads the medicine list from SharedPreferences.
   Future<void> makeMedicineList() async {
     SharedPreferences sharedUser = await SharedPreferences.getInstance();
     List<String>? jsonList = sharedUser.getStringList('medicines');
-    List<Medicine> prefList = [];
 
+    // Convert JSON list back to List<Medicine>
+    List<Medicine> loadedList = [];
     if (jsonList != null) {
-      prefList = jsonList.map((jsonMedicine) {
-        final userMap = jsonDecode(jsonMedicine);
-        return Medicine.fromJson(userMap);
-      }).toList();
+      loadedList = jsonList
+          .map((jsonMedicine) => Medicine.fromJson(jsonDecode(jsonMedicine)))
+          .toList();
     }
 
-    _medicineList$.add(prefList);
+    // Add loaded list to the BehaviorSubject
+    _medicineList$.add(loadedList);
   }
 
+  /// Disposes the [GlobalBloc] and closes streams.
   void dispose() {
     _medicineList$.close();
   }

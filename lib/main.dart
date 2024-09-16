@@ -4,12 +4,31 @@ import 'package:medication_reminder/Core/Utils/Classes/notifications_service.dar
 import 'package:medication_reminder/Views/Splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:workmanager/workmanager.dart';
 
-void main() async {
+void callbackDispatcher() {
+  Workmanager().executeTask((task, inputData) async {
+    debugPrint("WorkManager task executed: $task");
+
+    await NotificationsService.showInstantNotification(
+      'Medication Reminder',
+      'It is time to take your medicine.',
+    );
+
+    return Future.value(true);
+  });
+}
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize WorkManager for background tasks
+  Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
+
+  // Initialize notifications
   await NotificationsService.init();
-  // Ensure notifications are initialized
   await NotificationsService.checkNotificationChannel();
+
   runApp(const MyApp());
 }
 

@@ -32,7 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_local_notifications: ^17.2.2
-  flutter_native_splash: ^2.3.9
+  flutter_native_splash: ^2.4.1
   flutter_timezone: ^3.0.1
   google_fonts: ^6.2.1
   permission_handler: ^11.3.1
@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.2.2
   sizer: ^2.0.15
   timezone: ^0.9.4
+  workmanager: ^0.5.2
 
 dev_dependencies:
   flutter_lints: ^3.0.1

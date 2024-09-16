@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:medication_reminder/Core/Utils/Classes/medicine_type.dart';
+import 'package:medication_reminder/Views/Home/home_screen.dart';
+import 'package:workmanager/workmanager.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:medication_reminder/Models/medicine.dart';
+import 'package:medication_reminder/Core/Utils/Classes/medicine_type.dart';
 
 class NotificationsService {
   static final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -11,11 +13,10 @@ class NotificationsService {
 
   static const String customChannelId = 'custom_channel_id';
 
+  // Initialize notifications and time zones
   static Future<void> init() async {
-    // Initialize timezone data
     tz.initializeTimeZones();
 
-    // Define initialization settings for Android and iOS
     const AndroidInitializationSettings androidInitializationSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
@@ -27,54 +28,56 @@ class NotificationsService {
             android: androidInitializationSettings,
             iOS: iosInitializationSettings);
 
-    // Initialize the FlutterLocalNotificationsPlugin
     await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: (NotificationResponse response) async {
         if (response.payload != null) {
           debugPrint('Notification payload: ${response.payload}');
         }
-        // Navigate to specific screen if needed
+        // Navigation logic for notification click
+        Navigator.push(
+          BuildContext as BuildContext, // Use the correct BuildContext
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
       },
     );
 
-    // Create notification channel
     await checkNotificationChannel();
 
-    // Request permissions for iOS
     await flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()
+        .resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin>()
         ?.requestPermissions(
-            alert: true,
-            badge: true,
-            sound: true,
+          alert: true,
+          badge: true,
+          sound: true,
         );
   }
 
+  // Create custom notification channel for Android
   static Future<void> checkNotificationChannel() async {
-    // Define a notification channel for Android with custom sound
     const AndroidNotificationChannel channel = AndroidNotificationChannel(
       customChannelId,
-      'Sound',
-      description: 'This channel is used for notifications with custom sound',
+      'Medication Notifications',
+      description: 'Channel for medication reminders with custom sound',
       importance: Importance.max,
-      sound: RawResourceAndroidNotificationSound('sound'), // Ensure 'sound' is a valid file in res/raw
+      sound: RawResourceAndroidNotificationSound('sound'),
     );
 
-    // Create the notification channel
     await flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
     debugPrint('Notification channel created successfully');
   }
 
+  // Display an instant notification
   static Future<void> showInstantNotification(String title, String body) async {
-    // Define notification details
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: AndroidNotificationDetails(
         customChannelId,
-        'Sound',
+        'Medication Notification',
         sound: RawResourceAndroidNotificationSound('sound'),
         playSound: true,
         importance: Importance.max,
@@ -83,7 +86,6 @@ class NotificationsService {
       iOS: DarwinNotificationDetails(),
     );
 
-    // Show an instant notification
     await flutterLocalNotificationsPlugin.show(
       0, // Notification ID
       title,
@@ -93,9 +95,11 @@ class NotificationsService {
     );
   }
 
+  // Schedule a notification based on medicine details
   static Future<void> scheduleNotification(Medicine medicine) async {
-    final hour = int.parse(medicine.startTime![0] + medicine.startTime![1]);
-    final minute = int.parse(medicine.startTime![2] + medicine.startTime![3]);
+    final now = tz.TZDateTime.now(tz.local);
+    final hour = int.parse(medicine.startTime!.substring(0, 2));
+    final minute = int.parse(medicine.startTime!.substring(2, 4));
 
     for (int i = 0; i < (24 / medicine.interval!).floor(); i++) {
       var scheduledHour = hour + (medicine.interval! * i).toInt();
@@ -103,22 +107,38 @@ class NotificationsService {
         scheduledHour -= 24;
       }
 
-      final scheduledTime = tz.TZDateTime(
+      // Create the scheduled time
+      var scheduledTime = tz.TZDateTime(
         tz.local,
-        tz.TZDateTime.now(tz.local).year,
-        tz.TZDateTime.now(tz.local).month,
-        tz.TZDateTime.now(tz.local).day,
+        now.year,
+        now.month,
+        now.day,
         scheduledHour,
         minute,
-        0
+        0,
       );
+
+      // If scheduledTime is in the past, add a day
+      if (scheduledTime.isBefore(now)) {
+        const daysToAdd = 1;
+        final nextDay = now.add(const Duration(days: daysToAdd));
+        scheduledTime = tz.TZDateTime(
+          tz.local,
+          nextDay.year,
+          nextDay.month,
+          nextDay.day,
+          scheduledHour,
+          minute,
+          0,
+        );
+      }
 
       debugPrint('Scheduling notification for ${scheduledTime.toString()}');
 
       const NotificationDetails platformChannelSpecifics = NotificationDetails(
         android: AndroidNotificationDetails(
           customChannelId,
-          'Sound',
+          'Medication Notification',
           sound: RawResourceAndroidNotificationSound('sound'),
           playSound: true,
           importance: Importance.max,
@@ -129,13 +149,16 @@ class NotificationsService {
 
       try {
         await flutterLocalNotificationsPlugin.zonedSchedule(
-          int.parse(medicine.notificationIDs![i] as String),
+          int.parse(medicine.notificationIDs![i]
+              .toString()), // Ensure IDs are integers
           'Reminder: ${medicine.medicineName}',
+          // ignore: unrelated_type_equality_checks
           medicine.medicineType != MedicineType.none
               ? 'It is time to take your ${medicine.medicineType!.toLowerCase()}, according to schedule'
               : 'It is time to take your medicine, according to schedule',
           scheduledTime,
           platformChannelSpecifics,
+          // ignore: deprecated_member_use
           androidAllowWhileIdle: true,
           uiLocalNotificationDateInterpretation:
               UILocalNotificationDateInterpretation.absoluteTime,
@@ -145,5 +168,34 @@ class NotificationsService {
         debugPrint('Error scheduling notification: $error');
       }
     }
+  }
+
+  // Schedule a periodic background notification task using WorkManager
+  static Future<void> scheduleBackgroundNotification(Medicine medicine) async {
+    Workmanager().registerPeriodicTask(
+      'unique-task-id-${medicine.medicineName}', // Unique identifier
+      'medicationReminder', // Task name
+      inputData: {
+        'medicineName': medicine.medicineName,
+        'interval': medicine.interval,
+        'type': medicine.medicineType.toString(),
+      },
+      frequency: Duration(hours: medicine.interval!),
+    );
+  }
+
+  static void callbackDispatcher() {
+    Workmanager().executeTask((task, inputData) async {
+      final String medicineName = inputData!['medicineName'];
+      final String type = inputData['type'];
+
+      await NotificationsService.showInstantNotification(
+          'Reminder: $medicineName',
+          type.isNotEmpty
+              ? 'Time to take your $type medication'
+              : 'Time to take your medicine');
+
+      return Future.value(true);
+    });
   }
 }
