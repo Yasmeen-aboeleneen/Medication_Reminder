@@ -9,7 +9,7 @@ import 'package:medication_reminder/Views/Widgets/extended_section.dart';
 import 'package:medication_reminder/Views/Widgets/main_section_info.dart';
 
 class MedicineDetailsScreen extends StatefulWidget {
-   const MedicineDetailsScreen(this.medicine, {super.key});
+  const MedicineDetailsScreen(this.medicine, {super.key});
   final Medicine medicine;
   @override
   State<MedicineDetailsScreen> createState() => _MedicineDetailsScreenState();
@@ -48,7 +48,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen> {
             ),
             MainSectionInfo(medicine: widget.medicine),
             SizedBox(
-              height: 4.h,
+              height: 7.h,
             ),
             ExtendedSection(
               medicine: widget.medicine,

@@ -4,66 +4,77 @@ import 'package:medication_reminder/Models/medicine.dart';
 import 'package:medication_reminder/Views/Widgets/main_info_table.dart';
 import 'package:sizer/sizer.dart';
 
-class MainSectionInfo extends StatelessWidget {
+class MainSectionInfo extends StatefulWidget {
   const MainSectionInfo({super.key, required this.medicine});
   final Medicine medicine;
+
+  @override
+  State<MainSectionInfo> createState() => _MainSectionInfoState();
+}
+
+class _MainSectionInfoState extends State<MainSectionInfo> {
   Hero makeIcon(double size) {
-    if (medicine.medicineType == 'pills') {
-      return Hero(
-        tag: medicine.medicineName! + medicine.medicineType!,
-        child: Image.asset(
-          'Assets/Icons/pills.png',
-          height: 8.h,
-        ),
-      );
-    } else if (medicine.medicineType == 'syrup') {
-      return Hero(
-        tag: medicine.medicineName! + medicine.medicineType!,
-        child: Image.asset(
-          'Assets/Icons/syrup.png',
-          height: 8.h,
-        ),
-      );
-    } else if (medicine.medicineType == 'syringe') {
-      return Hero(
-        tag: medicine.medicineName! + medicine.medicineType!,
-        child: Image.asset(
-          'Assets/Icons/syringe.png',
-          height: 8.h,
-        ),
-      );
-    } else if (medicine.medicineType == 'nasal') {
-      return Hero(
-        tag: medicine.medicineName! + medicine.medicineType!,
-        child: Image.asset(
-          'Assets/Icons/nasal-spray (1).png',
-          height: 8.h,
-        ),
-      );
-    } else if (medicine.medicineType == 'eyeDrops') {
-      return Hero(
-        tag: medicine.medicineName! + medicine.medicineType!,
-        child: Image.asset(
-          'Assets/Icons/eye-drops.png',
-          height: 8.h,
-        ),
-      );
-    } else if (medicine.medicineType == 'earDrops') {
-      return Hero(
-        tag: medicine.medicineName! + medicine.medicineType!,
-        child: Image.asset(
-          'Assets/Icons/ear-drops.png',
-          height: 8.h,
-        ),
-      );
+    String medicineType = widget.medicine.medicineType ?? 'unknown';
+
+    switch (medicineType) {
+      case 'pills':
+        return Hero(
+          tag: widget.medicine.medicineName + medicineType,
+          child: Image.asset(
+            'Assets/Icons/pills.png',
+            height: 9.h,
+          ),
+        );
+      case 'syrup':
+        return Hero(
+          tag: widget.medicine.medicineName + medicineType,
+          child: Image.asset(
+            'Assets/Icons/syrup.png',
+            height: 9.h,
+          ),
+        );
+      case 'syringe':
+        return Hero(
+          tag: widget.medicine.medicineName + medicineType,
+          child: Image.asset(
+            'Assets/Icons/syringe.png',
+            height: 9.h,
+          ),
+        );
+      case 'nasal':
+        return Hero(
+          tag: widget.medicine.medicineName + medicineType,
+          child: Image.asset(
+            'Assets/Icons/nasal-spray (1).png',
+            height: 9.h,
+          ),
+        );
+      case 'eyeDrops':
+        return Hero(
+          tag: widget.medicine.medicineName + medicineType,
+          child: Image.asset(
+            'Assets/Icons/eye-drops.png',
+            height: 9.h,
+          ),
+        );
+      case 'earDrops':
+        return Hero(
+          tag: widget.medicine.medicineName + medicineType,
+          child: Image.asset(
+            'Assets/Icons/ear-drops.png',
+            height: 9.h,
+          ),
+        );
+      default:
+        return Hero(
+          tag: '${widget.medicine.medicineName}unknown',
+          child: const Icon(
+            Icons.error,
+            color: kRed,
+            size: 35,
+          ),
+        );
     }
-    return Hero(
-        tag: medicine.medicineName! + medicine.medicineType!,
-        child: const Icon(
-          Icons.error,
-          color: kRed,
-          size: 35,
-        ));
   }
 
   @override
@@ -73,22 +84,23 @@ class MainSectionInfo extends StatelessWidget {
       children: [
         makeIcon(8.h),
         SizedBox(
-          width: 4.w,
+          width: 8.w,
         ),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Hero(
-              tag: medicine.medicineName!,
-              child: MainInfoTable(
-                fieldTitle: 'Medicine name',
-                fieldInfo: medicine.medicineName!,
-              ),
+            MainInfoTable(
+              fieldTitle: 'Medicine name',
+              fieldInfo: widget.medicine.medicineName,
+            ),
+            SizedBox(
+              height: 6.h,
             ),
             MainInfoTable(
               fieldTitle: "Dosage",
-              fieldInfo: medicine.dosage == 0
+              fieldInfo: widget.medicine.dosage == 0
                   ? "Not Specified"
-                  : "${medicine.dosage} mg",
+                  : "${widget.medicine.dosage} mg",
             ),
           ],
         )

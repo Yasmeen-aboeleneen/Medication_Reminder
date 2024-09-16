@@ -11,7 +11,6 @@ class HomeScreenBody extends StatefulWidget {
 
 class _HomeScreenBodyState extends State<HomeScreenBody>
     with SingleTickerProviderStateMixin {
-      
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;

@@ -3,38 +3,41 @@ import 'package:medication_reminder/Core/Constants/colors.dart';
 import 'package:sizer/sizer.dart';
 
 class MainInfoTable extends StatelessWidget {
-  const MainInfoTable(
-      {super.key, required this.fieldTitle, required this.fieldInfo});
+  const MainInfoTable({
+    super.key,
+    required this.fieldTitle,
+    required this.fieldInfo,
+  });
+
   final String fieldTitle;
   final String fieldInfo;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 40.w,
-      height: 15.h,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              fieldTitle,
-              style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1),
-            ),
-            Text(
-              fieldInfo,
-              style: TextStyle(
-                  color: kRed,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1),
-            ),
-          ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          overflow: TextOverflow.fade,
+          fieldTitle,
+          style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5,
+          ),
         ),
-      ),
+        SizedBox(height: 0.5.h),
+        Text(
+          overflow: TextOverflow.fade,
+          fieldInfo,
+          style: TextStyle(
+            color: kRed,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5,
+          ),
+        ),
+      ],
     );
   }
 }

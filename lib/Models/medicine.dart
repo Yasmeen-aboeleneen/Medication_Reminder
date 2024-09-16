@@ -1,6 +1,6 @@
 class Medicine {
   final List<int>? notificationIDs;
-  final String? medicineName;
+  final String medicineName; // Non-nullable
   final int? dosage;
   final String? medicineType;
   final int? interval;
@@ -8,7 +8,7 @@ class Medicine {
 
   Medicine({
     required this.notificationIDs,
-    required this.medicineName,
+    required this.medicineName,  // No need for null checks
     required this.dosage,
     required this.medicineType,
     required this.interval,
@@ -17,7 +17,7 @@ class Medicine {
 
   // Getters
   List<int> get getIDs => notificationIDs ?? [];
-  String get getName => medicineName ?? '';
+  String get getName => medicineName;  // No need for `?? ''` as it's non-nullable
   int get getDosage => dosage ?? 0;
   String get getType => medicineType ?? '';
   int get getInterval => interval ?? 0;
@@ -35,11 +35,12 @@ class Medicine {
   }
 
   factory Medicine.fromJson(Map<String, dynamic> parsedJson) {
+    // Handle missing or null fields gracefully
     return Medicine(
       notificationIDs: (parsedJson['ids'] as List<dynamic>?)
           ?.map((id) => id as int)
           .toList(),
-      medicineName: parsedJson['name'] as String?,
+      medicineName: parsedJson['name'] as String? ?? 'Unknown Medicine', 
       dosage: parsedJson['dosage'] as int?,
       medicineType: parsedJson['type'] as String?,
       interval: parsedJson['interval'] as int?,

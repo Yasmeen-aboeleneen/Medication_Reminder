@@ -19,7 +19,7 @@ class ExtendedInfoTable extends StatelessWidget {
             child: Text(
               fieldTitle,
               style: TextStyle(
-                  fontSize: 14.sp,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1),
             ),
@@ -28,7 +28,7 @@ class ExtendedInfoTable extends StatelessWidget {
             fieldinfo,
             style: TextStyle(
                 color: kRed,
-                fontSize: 12.sp,
+                fontSize: 15.sp,
                 fontWeight: FontWeight.w600,
                 letterSpacing: 1),
           ),
